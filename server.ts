@@ -1,0 +1,94 @@
+import express from "express";
+import path from "path";
+import dotenv from "dotenv";
+import { GoogleGenAI } from "@google/genai";
+import { createServer as createViteServer } from "vite";
+
+dotenv.config();
+
+async function startServer() {
+  const app = express();
+  const PORT = 3000;
+
+  app.use(express.json());
+
+  // API Route: AI Study Abroad Counselor Assistant
+  app.post("/api/ai-advisor", async (req, res) => {
+    try {
+      const { prompt, country, studyLevel } = req.body;
+
+      if (!prompt) {
+        return res.status(400).json({ error: "Prompt is required" });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey || apiKey === "MY_GEMINI_API_KEY") {
+        return res.json({
+          response: `As TASA Grassroots AI Advisor, I am pleased to assist you! Based on your interest in ${country || "global destinations"} for ${studyLevel || "higher education"}, top recommendations include UK (2-year post-study work visa), Canada (PGWP eligibility), Germany (tuition-free public universities), and Royal Roads or Wittenborg pathway options. Please schedule a free 1-on-1 session with our certified senior counselors for customized profile evaluation!`
+        });
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
+      const systemInstruction = `You are the official AI Study Abroad Counselor for "TASA–Grassroots Global Education" (Tagline: "Your Gateway to Global Education"). 
+Your goal is to assist students interested in studying abroad (UK, USA, Canada, Australia, Ireland, Germany, France, New Zealand).
+Key selling points of TASA Grassroots:
+- 12+ Years Experience, 5000+ Students Guided, 98.6% Visa Approval Rate
+- Direct Partner Universities: Royal Roads University (Canada), Wittenborg University (Germany/Netherlands), Varna University of Management (Bulgaria/UK dual degree), plus top universities in UK, USA, Australia.
+- Unique 1+2 Pathway Programs allowing students to study year 1 in India and transfer abroad with up to 50% cost savings.
+- Services: Admissions, Scholarships, Visa Assistance, Education Loans, Accommodation, Career Guidance.
+
+Provide professional, friendly, concise, and structured guidance. Include actionable next steps and invite them to click "Book Free Counselling".`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: [
+          {
+            role: "user",
+            parts: [{ text: `User Query: ${prompt}\nContext: Preferred Country: ${country || 'Any'}, Level: ${studyLevel || 'Any'}` }]
+          }
+        ],
+        config: {
+          systemInstruction,
+          temperature: 0.7,
+          maxOutputTokens: 800
+        }
+      });
+
+      const text = response.text || "Thank you for reaching out! Our TASA Grassroots senior counselors will be happy to assist you in detail.";
+      return res.json({ response: text });
+
+    } catch (err: any) {
+      console.error("AI Advisor Error:", err);
+      return res.status(500).json({ 
+        error: "Failed to generate AI advice",
+        fallback: "For detailed personalized advice, please click 'Book Free Counselling' to speak with our study abroad experts."
+      });
+    }
+  });
+
+  // Health check
+  app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", brand: "TASA–Grassroots Global Education" });
+  });
+
+  // Vite middleware for development vs static serve for production
+  if (process.env.NODE_ENV !== "production") {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: "spa",
+    });
+    app.use(vite.middlewares);
+  } else {
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
+    });
+  }
+
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`TASA Grassroots server running on http://0.0.0.0:${PORT}`);
+  });
+}
+
+startServer();

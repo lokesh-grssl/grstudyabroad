@@ -1,0 +1,239 @@
+import React, { useState } from 'react';
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock, 
+  Send, 
+  CheckCircle2, 
+  MessageSquare,
+  Building2,
+  Globe2,
+  Sparkles
+} from 'lucide-react';
+
+export const ContactView: React.FC = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    country: 'United Kingdom',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-16 pt-6">
+      
+      {/* Header Banner */}
+      <div className="text-center max-w-3xl mx-auto space-y-3 flex flex-col items-center">
+        <span className="inline-flex items-center gap-1.5 bg-red-50 text-red-700 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-red-200">
+          Grassroots Solutions & Services Pvt Ltd
+        </span>
+        <h1 className="font-heading font-black text-3xl sm:text-5xl text-slate-900 tracking-tight">
+          Get in Touch with Our Global Education Team
+        </h1>
+        <p className="text-slate-600 text-sm sm:text-base">
+          Visit our Corporate Office in Bangalore or reach out online for instant admissions, program selection, and visa guidance.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        {/* Contact Form Column */}
+        <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+            <div>
+              <h2 className="font-heading font-black text-2xl text-slate-900">
+                Send Us an Enquiry
+              </h2>
+              <p className="text-xs text-slate-500">
+                Free initial consultation with a senior study abroad counselor
+              </p>
+            </div>
+            <Sparkles className="w-6 h-6 text-red-600" />
+          </div>
+
+          {submitted ? (
+            <div className="p-8 text-center bg-emerald-50 rounded-2xl border border-emerald-200 space-y-3">
+              <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
+              <h3 className="font-heading font-bold text-xl text-emerald-900">Enquiry Received!</h3>
+              <p className="text-xs text-emerald-800">
+                Thank you, {formData.name}. Our senior advisor at Grassroots Solutions & Services will reach out to you within 2 hours at {formData.phone}.
+              </p>
+              <button
+                onClick={() => setSubmitted(false)}
+                className="mt-4 px-6 py-2.5 bg-red-600 text-white font-bold text-xs rounded-xl hover:bg-red-700 transition-colors"
+              >
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Your Full Name *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Rahul Sharma"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="rahul@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Preferred Destination *</label>
+                <select
+                  value={formData.country}
+                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600 font-medium"
+                >
+                  <option value="United Kingdom">United Kingdom (1000+ Programs)</option>
+                  <option value="Canada">Canada (PGWP & Co-op Options)</option>
+                  <option value="United States">United States (STEM OPT 3 Years)</option>
+                  <option value="Australia">Australia (Post-Study Work)</option>
+                  <option value="Germany">Germany (Low Tuition / Free Options)</option>
+                  <option value="Ireland">Ireland (Critical Skills Visa)</option>
+                  <option value="Pathway Program">1+2 Pathway Program (Save 50% Tuition)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Your Questions or Academic Background *</label>
+                <textarea
+                  rows={4}
+                  required
+                  placeholder="Mention your target degree (UG/PG), current GPA or stream, preferred intake..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-4 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-sm rounded-2xl shadow-lg hover:shadow-red-500/20 transition-all flex items-center justify-center gap-2"
+              >
+                <span>Submit Enquiry</span>
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* Corporate Office Info & WhatsApp Column */}
+        <div className="lg:col-span-5 space-y-6">
+          
+          {/* Corporate Office Highlight Card */}
+          <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-2xl border border-slate-800 space-y-5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 rounded-full blur-2xl pointer-events-none" />
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red-400">
+              <Building2 className="w-4 h-4" /> Corporate Office
+            </div>
+
+            <div>
+              <h3 className="font-heading font-black text-xl text-white">
+                Grassroots Solutions & Services Pvt Ltd
+              </h3>
+              <p className="text-xs text-slate-400 mt-1">
+                Bangalore Headquarters
+              </p>
+            </div>
+            
+            <div className="space-y-3 text-xs text-slate-300 border-t border-slate-800 pt-4">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                <span className="font-medium leading-relaxed text-slate-200">
+                  332/1, 1st Floor, Corporate Miller, Thimmaiah Road, Vasanth Nagar, Bangalore
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-red-500 shrink-0" />
+                <span>+91 80 6789 1111 / +91 98765 43210</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-red-500 shrink-0" />
+                <span>admissions@tasagrassroots.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Clock className="w-4 h-4 text-red-500 shrink-0" />
+                <span>Monday - Saturday: 9:30 AM - 7:00 PM IST</span>
+              </div>
+            </div>
+          </div>
+
+          {/* WhatsApp Quick Chat */}
+          <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-6 rounded-3xl shadow-xl space-y-3">
+            <h3 className="font-heading font-extrabold text-lg text-white flex items-center gap-2">
+              <MessageSquare className="w-5 h-5" /> Instant WhatsApp Connect
+            </h3>
+            <p className="text-emerald-50 text-xs leading-relaxed">
+              Connect directly with our Bangalore corporate counseling team for immediate assistance on program requirements, fee waivers, or visa queries.
+            </p>
+            <a
+              href="https://wa.me/919876543210?text=Hi%20Grassroots%20Solutions,%20I%20want%20to%20enquire%20about%20study%20abroad!"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs rounded-xl shadow-md transition-all mt-1"
+            >
+              <span>Chat with Bangalore Desk</span>
+              <Send className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Embedded Map Section */}
+      <section className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-lg">
+        <div className="p-4 bg-slate-50 border-b border-slate-200 font-heading font-bold text-sm text-slate-800 flex items-center gap-2">
+          <MapPin className="w-4 h-4 text-red-600" />
+          <span>Corporate Office Map — Vasanth Nagar, Bangalore</span>
+        </div>
+        <iframe
+          title="Google Map Vasanth Nagar Bangalore"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.822830847952!2d77.5878!3d12.9877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167a50000000%3A0x1000000000000000!2sThimmaiah%20Rd%2C%20Vasanth%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560052!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+          width="100%"
+          height="350"
+          style={{ border: 0 }}
+          allowFullScreen={false}
+          loading="lazy"
+        />
+      </section>
+
+    </div>
+  );
+};
