@@ -117,10 +117,15 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
 
           {/* Progress Indicator */}
           {!submitted && (
-            <div className="flex items-center gap-2 mt-4 pt-4 border-t border-white/20">
-              <div className={`h-1.5 flex-1 rounded-full ${step >= 1 ? 'bg-white' : 'bg-white/30'}`} />
-              <div className={`h-1.5 flex-1 rounded-full ${step >= 2 ? 'bg-white' : 'bg-white/30'}`} />
-              <div className={`h-1.5 flex-1 rounded-full ${step >= 3 ? 'bg-white' : 'bg-white/30'}`} />
+            <div className="mt-4 pt-4 border-t border-white/20 space-y-1.5">
+              <div className="flex justify-between items-center text-xs font-semibold text-white/90">
+                <span>{step === 1 ? 'Step 1: Study Goals' : 'Step 2: Contact Information'}</span>
+                <span>Step {step} of 2</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className={`h-1.5 flex-1 rounded-full ${step >= 1 ? 'bg-white' : 'bg-white/30'}`} />
+                <div className={`h-1.5 flex-1 rounded-full ${step >= 2 ? 'bg-white' : 'bg-white/30'}`} />
+              </div>
             </div>
           )}
         </div>
@@ -136,7 +141,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                 Counselling Session Reserved!
               </h3>
               <p className="text-gray-600 text-sm max-w-md mx-auto">
-                Thank you, <span className="font-semibold text-[#8B1E2D]">{formData.fullName}</span>! Our senior counsellor will contact you at <span className="font-semibold">{formData.phone}</span> within 2 hours to confirm your {formData.counsellingMode} session.
+                Thank you, <span className="font-semibold text-[#8B1E2D]">{formData.fullName}</span>! Our senior study abroad counsellor will contact you at <span className="font-semibold">{formData.phone}</span> within 2 hours.
               </p>
               
               <div className="bg-[#FAFAFA] p-4 rounded-2xl border border-gray-200 text-left text-xs space-y-2 max-w-md mx-auto">
@@ -149,8 +154,8 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                   <span className="font-semibold text-gray-800">{formData.studyLevel}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Preferred Mode:</span>
-                  <span className="font-semibold text-gray-800">{formData.counsellingMode}</span>
+                  <span className="text-gray-500">Target Intake:</span>
+                  <span className="font-semibold text-gray-800">{formData.preferredIntake}</span>
                 </div>
               </div>
 
@@ -164,37 +169,39 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               
-              {/* Step 1: Study Preferences */}
+              {/* Step 1: Study Goals */}
               {step === 1 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
-                  <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2">
+                  <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2 pb-2 border-b border-gray-100">
                     <Globe className="w-5 h-5 text-[#8B1E2D]" /> Step 1: Study Goals
                   </h3>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                      Preferred Study Destination *
-                    </label>
-                    <select
-                      value={formData.preferredDestination}
-                      onChange={(e) => setFormData({ ...formData, preferredDestination: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
-                    >
-                      {destinations.map(d => <option key={d} value={d}>{d}</option>)}
-                    </select>
-                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                        Preferred Study Destination *
+                      </label>
+                      <select
+                        value={formData.preferredDestination}
+                        onChange={(e) => setFormData({ ...formData, preferredDestination: e.target.value })}
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                      >
+                        {destinations.map(d => <option key={d} value={d}>{d}</option>)}
+                      </select>
+                    </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                      Level of Study *
-                    </label>
-                    <select
-                      value={formData.studyLevel}
-                      onChange={(e) => setFormData({ ...formData, studyLevel: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
-                    >
-                      {levels.map(l => <option key={l} value={l}>{l}</option>)}
-                    </select>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                        Level of Study *
+                      </label>
+                      <select
+                        value={formData.studyLevel}
+                        onChange={(e) => setFormData({ ...formData, studyLevel: e.target.value })}
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                      >
+                        {levels.map(l => <option key={l} value={l}>{l}</option>)}
+                      </select>
+                    </div>
                   </div>
 
                   <div>
@@ -216,17 +223,17 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                       onClick={() => setStep(2)}
                       className="px-6 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-sm rounded-xl flex items-center gap-2 transition-all shadow-md"
                     >
-                      <span>Next: Contact Details</span>
+                      <span>Next: Contact Information</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* Step 2: Student Details */}
+              {/* Step 2: Contact Information */}
               {step === 2 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
-                  <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2">
+                  <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2 pb-2 border-b border-gray-100">
                     <User className="w-5 h-5 text-[#8B1E2D]" /> Step 2: Contact Information
                   </h3>
 
@@ -289,122 +296,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                       onClick={() => setStep(1)}
                       className="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-sm rounded-xl flex items-center gap-1.5 transition-colors"
                     >
-                      <ArrowLeft className="w-4 h-4" /> Back
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (formData.fullName && formData.email && formData.phone) {
-                          setStep(3);
-                        } else {
-                          alert('Please fill in your name, email, and phone number.');
-                        }
-                      }}
-                      className="px-6 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-sm rounded-xl flex items-center gap-2 transition-all shadow-md"
-                    >
-                      <span>Next: Schedule Session</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Step 3: Session Mode & Schedule */}
-              {step === 3 && (
-                <div className="space-y-4 animate-in fade-in duration-200">
-                  <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-[#8B1E2D]" /> Step 3: Mode & Slot Selection
-                  </h3>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                      Preferred Mode *
-                    </label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {(['Online Video', 'In-Person Branch', 'Phone Call'] as const).map((mode) => (
-                        <button
-                          key={mode}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, counsellingMode: mode })}
-                          className={`py-3 px-2 rounded-xl text-xs font-semibold border transition-all text-center ${
-                            formData.counsellingMode === mode
-                              ? 'bg-[#8B1E2D] text-white border-[#8B1E2D] shadow-md'
-                              : 'bg-[#FAFAFA] text-gray-700 border-gray-300 hover:bg-gray-100'
-                          }`}
-                        >
-                          {mode}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {formData.counsellingMode === 'In-Person Branch' && (
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
-                        Select Branch Location *
-                      </label>
-                      <select
-                        value={formData.preferredBranch}
-                        onChange={(e) => setFormData({ ...formData, preferredBranch: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
-                      >
-                        {branches.map(b => <option key={b} value={b}>{b}</option>)}
-                      </select>
-                    </div>
-                  )}
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
-                        Preferred Date *
-                      </label>
-                      <input
-                        type="date"
-                        required
-                        value={formData.preferredDate}
-                        onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
-                        Preferred Time Slot *
-                      </label>
-                      <select
-                        value={formData.preferredTime}
-                        onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
-                      >
-                        <option value="10:00 AM">10:00 AM - 11:00 AM</option>
-                        <option value="11:30 AM">11:30 AM - 12:30 PM</option>
-                        <option value="02:00 PM">02:00 PM - 03:00 PM</option>
-                        <option value="04:00 PM">04:00 PM - 05:00 PM</option>
-                        <option value="06:00 PM">06:00 PM - 07:00 PM</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                      Any specific questions or course interests? (Optional)
-                    </label>
-                    <textarea
-                      rows={2}
-                      placeholder="e.g. Want to know about scholarships for Royal Roads University MBA..."
-                      value={formData.notes}
-                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="pt-4 flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={() => setStep(2)}
-                      className="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-sm rounded-xl flex items-center gap-1.5 transition-colors"
-                    >
-                      <ArrowLeft className="w-4 h-4" /> Back
+                      <ArrowLeft className="w-4 h-4" /> Back to Study Goals
                     </button>
                     <button
                       type="submit"

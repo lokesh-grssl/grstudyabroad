@@ -508,26 +508,6 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 </div>
               </div>
 
-              {/* Photo Gallery Grid */}
-              {university.gallery && university.gallery.length > 0 && (
-                <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
-                  <h4 className="font-heading font-extrabold text-xs sm:text-sm text-gray-900 uppercase tracking-wider">
-                    Campus Gallery & Facilities
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {university.gallery.map((img, idx) => (
-                      <div key={idx} className="h-36 rounded-xl overflow-hidden border border-gray-200 group relative">
-                        <img 
-                          src={img} 
-                          alt={`${university.name} campus view ${idx + 1}`}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
             </div>
           )}
 

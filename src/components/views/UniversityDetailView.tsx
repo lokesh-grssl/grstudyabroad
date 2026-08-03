@@ -517,26 +517,6 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                   </div>
                 </div>
 
-                {/* Photo Gallery Grid */}
-                {university.gallery && university.gallery.length > 0 && (
-                  <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-2xs space-y-4">
-                    <h3 className="font-heading font-extrabold text-base text-gray-900 uppercase tracking-wider">
-                      Campus Gallery & Facilities
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {university.gallery.map((img, idx) => (
-                        <div key={idx} className="h-48 rounded-2xl overflow-hidden border border-gray-200 group relative shadow-xs">
-                          <img 
-                            src={img} 
-                            alt={`${university.name} campus facility ${idx + 1}`}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
               </div>
             )}
 

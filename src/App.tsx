@@ -206,7 +206,7 @@ export default function App() {
             )}
 
             {currentView === 'blogs' && (
-              <BlogsView />
+              <BlogsView onOpenBookModal={handleOpenBookModal} />
             )}
 
             {currentView === 'events' && (

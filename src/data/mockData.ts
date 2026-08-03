@@ -3773,8 +3773,8 @@ export const BLOGS: BlogPost[] = [
     author: 'TASA Global Research & Scholarship Council',
     date: 'August 2026',
     readTime: '18 min read',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80',
-    excerpt: 'The ultimate SEO-optimized master guide detailing 100+ fully funded global scholarships for Indian undergraduate, Master’s, and PhD students for the 2027 academic intake.',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80',
+    excerpt: 'Comprehensive guide detailing 100+ fully funded global scholarships for Indian undergraduate, Master’s, and PhD students for the 2027 academic intake.',
     content: [
       'SECTION: 1. Introduction: The 2027 Scholarship Landscape',
       'Studying abroad without taking on massive educational loans is a dream shared by thousands of Indian students every year. For the upcoming 2027 academic intake, global universities, international governments, and philanthropic foundations have earmarked over $500 Million in fully funded scholarship opportunities specifically targeting talented Indian scholars.',

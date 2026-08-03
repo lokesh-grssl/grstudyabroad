@@ -13,12 +13,14 @@ import {
 } from 'lucide-react';
 
 export const ContactView: React.FC = () => {
+  const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     country: 'United Kingdom',
+    studyLevel: 'Postgraduate (Master’s)',
     message: ''
   });
 
@@ -59,6 +61,23 @@ export const ContactView: React.FC = () => {
             <Sparkles className="w-6 h-6 text-red-600" />
           </div>
 
+          {/* Step Indicator Header */}
+          {!submitted && (
+            <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
+              <div className="flex justify-between items-center text-xs font-bold text-slate-700">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-red-600" />
+                  {step === 1 ? 'Step 1: Study Goals' : 'Step 2: Contact Information'}
+                </span>
+                <span className="text-slate-500">Step {step} of 2</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className={`h-1.5 flex-1 rounded-full ${step >= 1 ? 'bg-red-600' : 'bg-slate-200'}`} />
+                <div className={`h-1.5 flex-1 rounded-full ${step >= 2 ? 'bg-red-600' : 'bg-slate-200'}`} />
+              </div>
+            </div>
+          )}
+
           {submitted ? (
             <div className="p-8 text-center bg-emerald-50 rounded-2xl border border-emerald-200 space-y-3">
               <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
@@ -67,7 +86,10 @@ export const ContactView: React.FC = () => {
                 Thank you, {formData.name}. Our senior advisor at Grassroots Solutions & Services will reach out to you within 2 hours at {formData.phone}.
               </p>
               <button
-                onClick={() => setSubmitted(false)}
+                onClick={() => {
+                  setSubmitted(false);
+                  setStep(1);
+                }}
                 className="mt-4 px-6 py-2.5 bg-red-600 text-white font-bold text-xs rounded-xl hover:bg-red-700 transition-colors"
               >
                 Send Another Message
@@ -75,80 +97,135 @@ export const ContactView: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Your Full Name *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Rahul Sharma"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
-                />
-              </div>
+              
+              {/* Step 1: Study Goals */}
+              {step === 1 && (
+                <div className="space-y-4 animate-in fade-in duration-200">
+                  <h3 className="font-heading font-bold text-base text-slate-900 flex items-center gap-2">
+                    <Globe2 className="w-5 h-5 text-red-600" /> Step 1: Study Goals
+                  </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="rahul@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
-                  />
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Preferred Destination *</label>
+                    <select
+                      value={formData.country}
+                      onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600 font-medium"
+                    >
+                      <option value="United Kingdom">United Kingdom (1000+ Programs)</option>
+                      <option value="Canada">Canada (PGWP & Co-op Options)</option>
+                      <option value="United States">United States (STEM OPT 3 Years)</option>
+                      <option value="Australia">Australia (Post-Study Work)</option>
+                      <option value="Germany">Germany (Low Tuition / Free Options)</option>
+                      <option value="Ireland">Ireland (Critical Skills Visa)</option>
+                      <option value="Pathway Program">1+2 Pathway Program (Save 50% Tuition)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Level of Study *</label>
+                    <select
+                      value={formData.studyLevel}
+                      onChange={(e) => setFormData({ ...formData, studyLevel: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600 font-medium"
+                    >
+                      <option value="Undergraduate (Bachelor’s)">Undergraduate (Bachelor’s)</option>
+                      <option value="Postgraduate (Master’s)">Postgraduate (Master’s)</option>
+                      <option value="MBA / Executive">MBA / Executive</option>
+                      <option value="Diploma / Pathway">Diploma / Pathway</option>
+                      <option value="PhD / Doctorate">PhD / Doctorate</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Your Questions or Academic Background *</label>
+                    <textarea
+                      rows={3}
+                      required
+                      placeholder="Mention your target degree, current GPA or stream, preferred intake..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                    />
+                  </div>
+
+                  <div className="pt-2 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => setStep(2)}
+                      className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-xl transition-all shadow-md flex items-center gap-2"
+                    >
+                      <span>Next: Contact Information</span>
+                      <Send className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
+              )}
 
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+91 98765 43210"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
-                  />
+              {/* Step 2: Contact Information */}
+              {step === 2 && (
+                <div className="space-y-4 animate-in fade-in duration-200">
+                  <h3 className="font-heading font-bold text-base text-slate-900 flex items-center gap-2">
+                    <Building2 className="w-5 h-5 text-red-600" /> Step 2: Contact Information
+                  </h3>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Your Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rahul Sharma"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="rahul@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="+91 98765 43210"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2 flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm rounded-xl transition-colors"
+                    >
+                      Back to Study Goals
+                    </button>
+                    <button
+                      type="submit"
+                      className="px-8 py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-sm rounded-xl shadow-lg transition-all flex items-center gap-2"
+                    >
+                      <span>Submit Enquiry</span>
+                      <Send className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Preferred Destination *</label>
-                <select
-                  value={formData.country}
-                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600 font-medium"
-                >
-                  <option value="United Kingdom">United Kingdom (1000+ Programs)</option>
-                  <option value="Canada">Canada (PGWP & Co-op Options)</option>
-                  <option value="United States">United States (STEM OPT 3 Years)</option>
-                  <option value="Australia">Australia (Post-Study Work)</option>
-                  <option value="Germany">Germany (Low Tuition / Free Options)</option>
-                  <option value="Ireland">Ireland (Critical Skills Visa)</option>
-                  <option value="Pathway Program">1+2 Pathway Program (Save 50% Tuition)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Your Questions or Academic Background *</label>
-                <textarea
-                  rows={4}
-                  required
-                  placeholder="Mention your target degree (UG/PG), current GPA or stream, preferred intake..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold text-sm rounded-2xl shadow-lg hover:shadow-red-500/20 transition-all flex items-center justify-center gap-2"
-              >
-                <span>Submit Enquiry</span>
-                <Send className="w-4 h-4" />
-              </button>
             </form>
           )}
         </div>
