@@ -281,7 +281,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                         <input
                           type="tel"
                           required
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 84959 70819"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"

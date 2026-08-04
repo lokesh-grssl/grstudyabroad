@@ -199,7 +199,7 @@ export const ContactView: React.FC = () => {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 84959 70819"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-600"
@@ -258,7 +258,7 @@ export const ContactView: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-red-500 shrink-0" />
-                <span>+91 80 6789 1111 / +91 98765 43210</span>
+                <span>+91 84959 70819</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-red-500 shrink-0" />
@@ -280,7 +280,7 @@ export const ContactView: React.FC = () => {
               Connect directly with our Bangalore corporate counseling team for immediate assistance on program requirements, fee waivers, or visa queries.
             </p>
             <a
-              href="https://wa.me/919876543210?text=Hi%20Grassroots%20Solutions,%20I%20want%20to%20enquire%20about%20study%20abroad!"
+              href="https://wa.me/918495970819?text=Hi%20Grassroots%20Solutions,%20I%20want%20to%20enquire%20about%20study%20abroad!"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-xs rounded-xl shadow-md transition-all mt-1"

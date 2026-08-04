@@ -5,7 +5,7 @@ export const WhatsAppButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  const phone = '919876543210';
+  const phone = '918495970819';
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();

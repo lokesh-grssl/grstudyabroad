@@ -881,7 +881,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                 </button>
 
                 <a
-                  href="https://wa.me/919876543210?text=Hello%20TASA,%20I%20am%20interested%20in%20applying%20to%20" 
+                  href="https://wa.me/918495970819?text=Hello%20TASA,%20I%20am%20interested%20in%20applying%20to%20" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl transition-all flex items-center justify-center gap-2"

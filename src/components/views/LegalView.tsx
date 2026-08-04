@@ -471,7 +471,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs text-slate-300">
                 <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-red-400" /> legal@tasagrassroots.com</span>
                 <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-red-400" /> privacy@tasagrassroots.com</span>
-                <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-red-400" /> +91 40 4850 8899</span>
+                <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-red-400" /> +91 84959 70819</span>
               </div>
             </div>
 
