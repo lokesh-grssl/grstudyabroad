@@ -80,6 +80,7 @@ export function getUniversityInitials(uniName: string): string {
 }
 
 import { getUniversityLogoUrls, getUniversityCrestTheme } from '../utils/universityLogos';
+import { getCountryTuitionRange } from '../utils/currencyUtils';
 
 export function getUniversityCampusImage(uniName: string, countryCode: string, idx: number): string {
   const code = (countryCode || 'US').toUpperCase();
@@ -562,6 +563,7 @@ export const ALL_MASTER_UNIVERSITIES: MasterUniversity[] = RAW_MASTER_UNIVERSITI
       isPathwayPartner: isPathway,
       qsRanking: idx < 5 ? `#${(idx + 1) * 20 + 10} Global / Top Institution in ${cGroup.country}` : undefined,
       tuitionTier: tier,
+      tuitionRange: getCountryTuitionRange(cGroup.code, tier),
       institutionType: instType,
       sector,
       hasIeltsWaiver: idx % 4 !== 0, // ~75% accept MOI / IELTS waivers
@@ -575,11 +577,7 @@ export const ALL_MASTER_UNIVERSITIES: MasterUniversity[] = RAW_MASTER_UNIVERSITI
 import { University } from '../types';
 
 export function masterToUniversity(m: MasterUniversity): University {
-  const tuition = m.tuitionRange || (
-    m.tuitionTier === 'Budget' ? '< $15,000 / year' :
-    m.tuitionTier === 'Premium' ? '$25,000+ / year' :
-    '$15,000 - $25,000 / year'
-  );
+  const tuition = m.tuitionRange || getCountryTuitionRange(m.countryCode || m.country, m.tuitionTier);
 
   return {
     id: m.id || m.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),

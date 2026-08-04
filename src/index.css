@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
   --font-heading: "Poppins", sans-serif;
   --color-brand-red: #8B1E2D;
   --color-brand-dark: #6C1521;
@@ -24,6 +24,10 @@
 
 .font-heading {
   font-family: "Poppins", sans-serif;
+}
+
+.font-sans {
+  font-family: "Figtree", system-ui, -apple-system, sans-serif;
 }
 
 /* Glassmorphism utilities */

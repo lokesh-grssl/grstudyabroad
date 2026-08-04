@@ -22,8 +22,8 @@ export const WhatsAppButton: React.FC = () => {
         <div className="mb-3 bg-white rounded-2xl shadow-2xl border border-gray-200 w-80 p-4 animate-in slide-in-from-bottom duration-200">
           <div className="flex items-center justify-between pb-3 border-b border-gray-100">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm">
-                💬
+              <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shadow-xs">
+                <MessageSquare className="w-4 h-4 text-white fill-white" />
               </div>
               <div>
                 <div className="font-heading font-bold text-sm text-gray-900">TASA WhatsApp Support</div>
@@ -35,25 +35,31 @@ export const WhatsAppButton: React.FC = () => {
             <button
               onClick={() => setIsOpen(false)}
               className="p-1 text-gray-400 hover:text-gray-600 rounded-full"
+              aria-label="Close WhatsApp Chat"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="py-3 text-xs text-gray-600 bg-emerald-50/50 rounded-xl p-3 my-3 border border-emerald-100">
-            👋 Hello! Ask us about country options, intake deadlines, Royal Roads & Wittenborg pathways, or scholarship limits!
+          <div className="py-3 text-xs text-gray-700 bg-emerald-50/70 rounded-xl p-3 my-3 border border-emerald-100 flex items-start gap-2">
+            <Sparkles className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>Hello! Ask us about country options, intake deadlines, Royal Roads & Wittenborg pathways, or scholarship limits!</span>
           </div>
 
           <form onSubmit={handleSend} className="space-y-2">
+            <label htmlFor="whatsapp-input" className="sr-only">Type your question for WhatsApp</label>
             <input
+              id="whatsapp-input"
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your study abroad question..."
+              aria-label="Type your study abroad question"
               className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <button
               type="submit"
+              aria-label="Start WhatsApp Chat"
               className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-md transition-colors"
             >
               <span>Start WhatsApp Chat</span>
@@ -68,6 +74,7 @@ export const WhatsAppButton: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 group relative"
         title="Chat on WhatsApp"
+        aria-label="Chat on WhatsApp support"
       >
         <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center animate-bounce">
           1

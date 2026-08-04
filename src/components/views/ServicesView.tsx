@@ -70,8 +70,10 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onOpenBookModal }) =
             }`}
           >
             <div className="space-y-3">
-              <div className={`p-3 rounded-2xl w-fit ${
-                selectedService?.id === srv.id ? 'bg-white/20 text-white' : 'bg-[#8B1E2D]/10 text-[#8B1E2D]'
+              <div className={`p-3.5 rounded-2xl w-fit transition-all border ${
+                selectedService?.id === srv.id 
+                  ? 'bg-white/20 text-white border-white/30 shadow-xs' 
+                  : 'bg-gradient-to-br from-[#8B1E2D]/10 to-[#8B1E2D]/5 text-[#8B1E2D] border-[#8B1E2D]/20 shadow-2xs'
               }`}>
                 {getServiceIcon(srv.icon)}
               </div>

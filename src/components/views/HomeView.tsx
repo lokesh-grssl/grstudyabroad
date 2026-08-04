@@ -90,7 +90,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           
           <div className="max-w-4xl mx-auto space-y-6 text-center">
             
-            <div className="inline-flex items-center gap-2 bg-[#8B1E2D]/10 text-[#8B1E2D] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-[#8B1E2D]/20 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-[#8B1E2D]/10 text-[#8B1E2D] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-[#8B1E2D]/20 shadow-xs">
               <Sparkles className="w-4 h-4 text-[#8B1E2D]" />
               <span>Premier Overseas Education Advisory • 36 Years Excellence</span>
             </div>
@@ -185,6 +185,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <img
                   src={dest.heroImage}
                   alt={dest.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -249,7 +251,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className="bg-[#FAFAFA] hover:bg-white p-5 rounded-2xl border border-[#E8E8E8] hover:border-[#8B1E2D] shadow-sm hover:shadow-md transition-all text-left flex flex-col justify-between group"
               >
                 <div className="space-y-3">
-                  <div className="p-3 bg-white rounded-xl w-fit shadow-xs group-hover:bg-[#8B1E2D]/10 transition-colors">
+                  <div className="p-3 bg-gradient-to-br from-white via-slate-50 to-red-50/30 rounded-2xl w-fit border border-slate-200/80 shadow-2xs group-hover:border-[#8B1E2D]/40 group-hover:bg-red-50/50 group-hover:shadow-xs transition-all">
                     {getCourseIcon(course.iconName)}
                   </div>
                   <div>

@@ -12,7 +12,9 @@ import {
   DollarSign,
   Clock,
   BookOpen,
-  Award
+  Award,
+  BadgeDollarSign,
+  FileCheck2
 } from 'lucide-react';
 
 interface PathwayProgramsViewProps {
@@ -57,32 +59,32 @@ export const PathwayProgramsView: React.FC<PathwayProgramsViewProps> = ({ onOpen
       {/* Benefits Summary Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white p-6 rounded-2xl border border-[#E8E8E8] shadow-soft space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-lg">
-            💵
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 flex items-center justify-center font-bold text-lg shadow-2xs">
+            <BadgeDollarSign className="w-5 h-5 text-emerald-600" />
           </div>
           <h3 className="font-heading font-bold text-base text-[#222222]">Transparent Fee Structure</h3>
           <p className="text-xs text-gray-600">Fixed India & International tuition costs with clear total fee breakdowns in USD.</p>
         </div>
 
         <div className="bg-white p-6 rounded-2xl border border-[#E8E8E8] shadow-soft space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-lg">
-            📜
+          <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/80 flex items-center justify-center font-bold text-lg shadow-2xs">
+            <FileCheck2 className="w-5 h-5 text-blue-600" />
           </div>
           <h3 className="font-heading font-bold text-base text-[#222222]">Synchronized Credit Transfer</h3>
           <p className="text-xs text-gray-600">Guaranteed credit transfer approval from TASA India campus to global partners.</p>
         </div>
 
         <div className="bg-white p-6 rounded-2xl border border-[#E8E8E8] shadow-soft space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center font-bold text-lg">
-            🎓
+          <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 border border-purple-200/80 flex items-center justify-center font-bold text-lg shadow-2xs">
+            <GraduationCap className="w-5 h-5 text-purple-600" />
           </div>
           <h3 className="font-heading font-bold text-base text-[#222222]">International Degrees</h3>
           <p className="text-xs text-gray-600">Earn official degrees directly from Royal Roads, Wittenborg, or Varna University.</p>
         </div>
 
         <div className="bg-white p-6 rounded-2xl border border-[#E8E8E8] shadow-soft space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-red-100 text-[#8B1E2D] flex items-center justify-center font-bold text-lg">
-            🌍
+          <div className="w-10 h-10 rounded-xl bg-red-50 text-[#8B1E2D] border border-red-200/80 flex items-center justify-center font-bold text-lg shadow-2xs">
+            <Globe2 className="w-5 h-5 text-[#8B1E2D]" />
           </div>
           <h3 className="font-heading font-bold text-base text-[#222222]">Global Career & Work Rights</h3>
           <p className="text-xs text-gray-600">Post-study work eligibility and international career opportunities in UAE, EU & Europe.</p>

@@ -37,6 +37,7 @@ import {
 import { University, Course } from '../../types';
 import { CountryFlag } from '../CountryFlag';
 import { getUniversityCrestTheme, getUniversityInitials } from '../../utils/universityLogos';
+import { formatTuitionInINR, getCountryCurrencyInfo, getCachedRates } from '../../utils/currencyUtils';
 
 interface UniversityDetailViewProps {
   university: University;
@@ -67,6 +68,11 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
 
   const theme = getUniversityCrestTheme(university.name);
   const initials = getUniversityInitials(university.name);
+  
+  const currencyInfo = getCountryCurrencyInfo(university.countryCode || university.country);
+  const inrEstimate = formatTuitionInINR(university.tuitionRange, university.countryCode || university.country);
+  const rates = getCachedRates();
+  const currentRate = rates[currencyInfo.code] || 86.8;
 
   // Feature flags
   const hasIeltsWaiver = Boolean(
@@ -351,8 +357,10 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs">
           
           <div className="bg-slate-800/90 p-3 rounded-2xl border border-slate-700/80">
-            <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">Est. Tuition</span>
-            <span className="font-extrabold text-amber-400 text-sm block truncate mt-0.5">{university.tuitionRange}</span>
+            <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">Est. Tuition (INR ₹)</span>
+            <span className="font-extrabold text-amber-400 text-xs sm:text-sm block truncate mt-0.5" title={`${university.tuitionRange} (${inrEstimate.inrText})`}>
+              {university.tuitionRange} <span className="text-emerald-400">({inrEstimate.lakhsRange})</span>
+            </span>
           </div>
 
           <div className="bg-slate-800/90 p-3 rounded-2xl border border-slate-700/80">
@@ -714,32 +722,45 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                   </div>
                 </div>
 
-                {/* Cost Breakdown Calculator */}
+                {/* Cost Breakdown Calculator with Forex Conversion */}
                 <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-2xs space-y-5">
-                  <h3 className="font-heading font-extrabold text-sm text-gray-900 uppercase tracking-wider flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-emerald-600" />
-                    <span>Estimated Annual Study & Living Cost Breakdown</span>
-                  </h3>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                    <h3 className="font-heading font-extrabold text-sm text-gray-900 uppercase tracking-wider flex items-center gap-2">
+                      <DollarSign className="w-5 h-5 text-emerald-600" />
+                      <span>Estimated Annual Cost Breakdown & Forex (₹ INR)</span>
+                    </h3>
+                    <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 flex items-center gap-1">
+                      <span>1 {currencyInfo.code} = ₹{currentRate.toFixed(2)} INR</span>
+                    </span>
+                  </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs sm:text-sm">
                     <div className="bg-slate-50 p-4 rounded-2xl border border-gray-200 space-y-1">
                       <span className="text-gray-500 font-medium block">Tuition Fee</span>
                       <strong className="text-gray-900 text-base block">{university.tuitionRange}</strong>
+                      <span className="text-emerald-700 font-bold text-xs block">Approx. {inrEstimate.inrText}</span>
                     </div>
 
                     <div className="bg-slate-50 p-4 rounded-2xl border border-gray-200 space-y-1">
                       <span className="text-gray-500 font-medium block">Living Expenses (Est.)</span>
-                      <strong className="text-gray-900 text-base block">$8,000 - $12,000 / year</strong>
+                      <strong className="text-gray-900 text-base block">~{currencyInfo.symbol}8,000 - {currencyInfo.symbol}12,000 / yr</strong>
+                      <span className="text-emerald-700 font-bold text-xs block">
+                        Approx. ₹{((8000 * currentRate) / 100000).toFixed(1)}L - ₹{((12000 * currentRate) / 100000).toFixed(1)}L / yr
+                      </span>
                     </div>
 
                     <div className="bg-slate-50 p-4 rounded-2xl border border-gray-200 space-y-1">
                       <span className="text-gray-500 font-medium block">Health Insurance & Fees</span>
-                      <strong className="text-gray-900 text-base block">$800 - $1,200 / year</strong>
+                      <strong className="text-gray-900 text-base block">~{currencyInfo.symbol}800 - {currencyInfo.symbol}1,200 / yr</strong>
+                      <span className="text-emerald-700 font-bold text-xs block">
+                        Approx. ₹{((800 * currentRate) / 1000).toFixed(0)}k - ₹{((1200 * currentRate) / 1000).toFixed(0)}k / yr
+                      </span>
                     </div>
 
                     <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 space-y-1">
                       <span className="text-emerald-800 font-medium block">Scholarship Potential</span>
                       <strong className="text-emerald-700 text-base block">Up to 30% Waiver</strong>
+                      <span className="text-emerald-900 font-extrabold text-xs block">TASA Priority Evaluation</span>
                     </div>
                   </div>
                 </div>
@@ -891,7 +912,10 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
 
                 <div className="flex justify-between py-1.5 border-b border-gray-100">
                   <span className="text-gray-500">Est. Tuition:</span>
-                  <strong className="text-gray-900 font-bold">{university.tuitionRange}</strong>
+                  <div className="text-right">
+                    <strong className="text-gray-900 font-bold block">{university.tuitionRange}</strong>
+                    <span className="text-emerald-700 font-bold text-[11px] block">({inrEstimate.lakhsRange})</span>
+                  </div>
                 </div>
 
                 <div className="flex justify-between py-1.5 border-b border-gray-100">

@@ -72,6 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Logo */}
             <a 
               href="#/"
+              aria-label="TASA Grassroots Education Home"
               onClick={(e) => {
                 e.preventDefault();
                 onNavigate('home');
@@ -82,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden xl:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60">
+            <nav aria-label="Main Navigation" className="hidden xl:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60">
               {navItems.map((item) => {
                 const isActive = currentView === item.view;
                 const path = item.view === 'home' ? '#/' : `/#/${item.view}`;
@@ -110,8 +111,9 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="hidden sm:flex items-center gap-2">
               <button
                 onClick={onOpenSearchModal}
-                className="p-2.5 text-slate-600 hover:text-red-600 hover:bg-slate-100 rounded-full transition-colors"
+                className="p-2.5 text-slate-700 hover:text-red-600 hover:bg-slate-100 rounded-full transition-colors"
                 title="Global Search"
+                aria-label="Open Global Search"
               >
                 <Search className="w-4 h-4" />
               </button>
@@ -130,6 +132,7 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 onClick={onOpenSearchModal}
                 className="p-2 text-slate-700 hover:bg-slate-100 rounded-full"
+                aria-label="Open Mobile Search"
               >
                 <Search className="w-5 h-5" />
               </button>

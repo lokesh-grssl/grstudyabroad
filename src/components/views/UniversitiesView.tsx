@@ -12,6 +12,8 @@ import {
 import { UniversityLogo } from '../UniversityLogo';
 import { CountryFlag } from '../CountryFlag';
 import { getUniversityCrestTheme } from '../../utils/universityLogos';
+import { getCountryTuitionRange, formatTuitionInINR, ForexRatesMap, DEFAULT_INR_RATES } from '../../utils/currencyUtils';
+import { ForexRatesWidget } from '../ForexRatesWidget';
 import { University } from '../../types';
 import { 
   Search, 
@@ -36,7 +38,12 @@ import {
   FileCheck,
   Percent,
   Check,
-  ChevronDown
+  ChevronDown,
+  Trophy,
+  Landmark,
+  Zap,
+  Gift,
+  Sprout
 } from 'lucide-react';
 
 interface UniversitiesViewProps {
@@ -70,9 +77,9 @@ const SECTORS = [
 
 const TUITION_TIERS = [
   { label: 'All Budgets', value: 'All Budgets' },
-  { label: 'Budget (< $15k/yr)', value: 'Budget' },
-  { label: 'Moderate ($15k - $25k)', value: 'Moderate' },
-  { label: 'Premium ($25k+/yr)', value: 'Premium' }
+  { label: 'Budget Tier (Affordable)', value: 'Budget' },
+  { label: 'Moderate Tier (Mid-Range)', value: 'Moderate' },
+  { label: 'Premium Tier (Global Elite)', value: 'Premium' }
 ];
 
 const SORT_OPTIONS = [
@@ -107,6 +114,10 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   // Sorting & Layout Mode
   const [sortBy, setSortBy] = useState('featured');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  // Forex Currency Exchange State
+  const [currencyMode, setCurrencyMode] = useState<'dual' | 'inr' | 'native'>('dual');
+  const [forexRates, setForexRates] = useState<ForexRatesMap>(DEFAULT_INR_RATES);
 
   // Infinite Scroll / Visible Count State
   const [visibleCount, setVisibleCount] = useState(24);
@@ -322,27 +333,32 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
         </label>
         <div className="grid grid-cols-2 gap-1.5">
           {[
-            { id: 'all', label: '🎓 All 1,274' },
-            { id: 'top', label: '🏆 Top Ranked' },
-            { id: 'public', label: '🏛️ Public Unis' },
-            { id: 'private', label: '🏰 Private Unis' },
-            { id: 'ielts', label: '⚡ IELTS Waiver' },
-            { id: 'scholarship', label: '🎁 Scholarships' },
-            { id: 'budget', label: '💰 Budget (< $15k)' },
-            { id: 'pathway', label: '🌱 Pathway Colleges' },
-          ].map(p => (
-            <button
-              key={p.id}
-              onClick={() => handleFilterChange(setSelectedPreset, p.id)}
-              className={`px-2.5 py-1.5 rounded-xl font-bold text-[11px] text-left transition-all ${
-                selectedPreset === p.id
-                  ? 'bg-[#8B1E2D] text-white shadow-sm'
-                  : 'bg-gray-50 border border-gray-200 text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              {p.label}
-            </button>
-          ))}
+            { id: 'all', label: 'All 1,274', icon: GraduationCap },
+            { id: 'top', label: 'Top Ranked', icon: Trophy },
+            { id: 'public', label: 'Public Unis', icon: Landmark },
+            { id: 'private', label: 'Private Unis', icon: Building2 },
+            { id: 'ielts', label: 'IELTS Waiver', icon: Zap },
+            { id: 'scholarship', label: 'Scholarships', icon: Gift },
+            { id: 'budget', label: 'Budget Friendly', icon: DollarSign },
+            { id: 'pathway', label: 'Pathway Colleges', icon: Sprout },
+          ].map(p => {
+            const Icon = p.icon;
+            const isSelected = selectedPreset === p.id;
+            return (
+              <button
+                key={p.id}
+                onClick={() => handleFilterChange(setSelectedPreset, p.id)}
+                className={`px-2.5 py-2 rounded-xl font-bold text-[11px] text-left transition-all flex items-center gap-1.5 ${
+                  isSelected
+                    ? 'bg-[#8B1E2D] text-white shadow-xs'
+                    : 'bg-gray-50/90 border border-gray-200/80 text-gray-700 hover:bg-gray-100/80'
+                }`}
+              >
+                <Icon className={`w-3.5 h-3.5 shrink-0 ${isSelected ? 'text-white' : 'text-[#8B1E2D]'}`} />
+                <span className="truncate">{p.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -570,6 +586,13 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
         {/* RIGHT CONTENT AREA (Column 4-12) */}
         <div className="lg:col-span-9 space-y-6">
           
+          {/* Live Forex Exchange Rates Banner & Currency Selector */}
+          <ForexRatesWidget 
+            currencyMode={currencyMode}
+            onCurrencyModeChange={setCurrencyMode}
+            onRatesUpdated={setForexRates}
+          />
+
           {/* Top Results Toolbar (Sort, View Mode, Active Tags) */}
           <div className="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm space-y-3">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
@@ -689,9 +712,18 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
               {displayedList.map((uni, idx) => {
                 const detailed = detailedMap.get(uni.name.toLowerCase());
                 const ranking = detailed?.qsRanking || uni.qsRanking;
-                const tuition = detailed?.tuitionRange || (uni.tuitionTier === 'Budget' ? '< $15,000 / yr' : uni.tuitionTier === 'Premium' ? '$25,000+ / yr' : '$15,000 - $25,000 / yr');
+                const rawTuition = detailed?.tuitionRange || uni.tuitionRange || getCountryTuitionRange(uni.countryCode || uni.country, uni.tuitionTier);
                 const acceptance = detailed?.acceptanceRate || 'Competitive';
                 const theme = getUniversityCrestTheme(uni.name);
+
+                // Convert tuition according to selected Forex currency mode
+                const inrInfo = formatTuitionInINR(rawTuition, uni.countryCode || uni.country, forexRates);
+                let tuitionDisplay = rawTuition;
+                if (currencyMode === 'inr') {
+                  tuitionDisplay = inrInfo.inrText;
+                } else if (currencyMode === 'dual') {
+                  tuitionDisplay = `${rawTuition} (${inrInfo.lakhsRange})`;
+                }
 
                 return (
                   <motion.div
@@ -774,7 +806,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                       <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80 text-xs grid grid-cols-2 gap-3">
                         <div className="space-y-0.5">
                           <span className="text-[10px] font-extrabold text-gray-400 uppercase tracking-wider block">Est. Tuition</span>
-                          <span className="font-black text-[#8B1E2D] text-xs block truncate">{tuition}</span>
+                          <span className="font-black text-[#8B1E2D] text-xs block truncate" title={tuitionDisplay}>{tuitionDisplay}</span>
                         </div>
                         <div className="space-y-0.5">
                           <span className="text-[10px] font-extrabold text-gray-400 uppercase tracking-wider block">Acceptance</span>
@@ -810,6 +842,15 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
             <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden divide-y divide-gray-100">
               {displayedList.map((uni, idx) => {
                 const branding = getUniversityCardBranding(uni.name, uni.countryCode, uni.institutionType, idx);
+                const rawTuition = uni.tuitionRange || getCountryTuitionRange(uni.countryCode || uni.country, uni.tuitionTier);
+                const inrInfo = formatTuitionInINR(rawTuition, uni.countryCode || uni.country, forexRates);
+                let tuitionListDisplay = rawTuition;
+                if (currencyMode === 'inr') {
+                  tuitionListDisplay = inrInfo.inrText;
+                } else if (currencyMode === 'dual') {
+                  tuitionListDisplay = `${rawTuition} (${inrInfo.lakhsRange})`;
+                }
+
                 return (
                   <div 
                     key={uni.id}
@@ -840,8 +881,8 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     <div className="flex items-center gap-4 text-xs shrink-0 self-end sm:self-center">
-                      <span className="text-gray-500 font-semibold bg-gray-100 px-2.5 py-1 rounded-lg">
-                        {uni.tuitionTier} Budget
+                      <span className="text-[#8B1E2D] font-bold bg-amber-50/80 border border-amber-200/60 px-2.5 py-1 rounded-lg">
+                        Est. {tuitionListDisplay}
                       </span>
                       <button
                         onClick={(e) => {

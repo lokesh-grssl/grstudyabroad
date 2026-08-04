@@ -66,16 +66,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                  <label htmlFor="newsletter-email" className="sr-only">Email address for updates</label>
                   <input
+                    id="newsletter-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address..."
                     required
+                    aria-label="Email address for updates"
                     className="px-4 py-3 bg-white/10 text-white placeholder-slate-400 rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm flex-1"
                   />
                   <button
                     type="submit"
+                    aria-label="Subscribe to updates"
                     className="px-6 py-3 bg-gradient-to-r from-red-600 to-rose-600 font-bold text-sm text-white rounded-2xl hover:from-red-500 hover:to-rose-500 transition-all flex items-center justify-center gap-2 shrink-0 shadow-lg"
                   >
                     <span>Subscribe</span>
@@ -131,16 +135,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
             </div>
 
             <div className="flex items-center gap-3 pt-2">
-              <a href="#" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <a href="#" aria-label="Follow TASA Grassroots on Facebook" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <a href="#" aria-label="Follow TASA Grassroots on Instagram" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <a href="#" aria-label="Follow TASA Grassroots on LinkedIn" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <a href="#" aria-label="Subscribe to TASA Grassroots on YouTube" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
                 <Youtube className="w-4 h-4" />
               </a>
             </div>
