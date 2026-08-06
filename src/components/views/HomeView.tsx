@@ -82,30 +82,43 @@ export const HomeView: React.FC<HomeViewProps> = ({
   };
 
   return (
-    <div className="space-y-24 pb-16">
+    <div className="space-y-8 sm:space-y-12 pb-16">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-8 pb-16 overflow-hidden bg-gradient-to-b from-white via-[#FAFAFA] to-[#FAFAFA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="px-2 sm:px-4 lg:px-8 pt-4 pb-0">
+        <div className="relative rounded-3xl overflow-hidden min-h-[520px] sm:min-h-[580px] flex items-center justify-center p-6 sm:p-12 lg:p-16 border border-gray-200/80 shadow-2xl">
+          {/* Background Video - Original & Natural */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero-bg.mp4" type="video/mp4" />
+          </video>
           
-          <div className="max-w-4xl mx-auto space-y-6 text-center">
+          {/* Natural dark overlay to maintain crisp text contrast on the video */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/50" />
+
+          <div className="relative z-10 max-w-4xl mx-auto space-y-6 text-center">
             
-            <div className="inline-flex items-center gap-2 bg-[#8B1E2D]/10 text-[#8B1E2D] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-[#8B1E2D]/20 shadow-xs">
-              <Sparkles className="w-4 h-4 text-[#8B1E2D]" />
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-white/30 shadow-sm">
+              <Sparkles className="w-4 h-4 text-amber-300" />
               <span>Premier Overseas Education Advisory • 36 Years Excellence</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-[#222222] tracking-tight leading-[1.1]">
+            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] drop-shadow-md">
               Study Abroad <br />
-              <span className="text-[#8B1E2D] relative inline-block">
+              <span className="text-[#F87171] relative inline-block">
                 Made Simple.
-                <svg className="absolute w-full h-3 -bottom-2 left-0 text-[#8B1E2D]/30" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <svg className="absolute w-full h-3 -bottom-2 left-0 text-[#F87171]/50" viewBox="0 0 100 20" preserveAspectRatio="none">
                   <path d="M0 15 Q 50 0, 100 15" stroke="currentColor" strokeWidth="6" fill="none" />
                 </svg>
               </span>
             </h1>
 
-            <p className="text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto font-normal">
+            <p className="text-gray-100 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto font-medium drop-shadow-xs">
               Admissions, Scholarships, Visa Assistance, Education Loans, Accommodation, Career Guidance and Post-arrival Support.
             </p>
 
@@ -113,7 +126,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <button
                 onClick={onOpenBookModal}
-                className="w-full sm:w-auto px-8 py-4 bg-[#8B1E2D] hover:bg-[#111111] text-white font-heading font-semibold text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#8B1E2D] hover:bg-[#a52235] text-white font-heading font-semibold text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
               >
                 <span>Book Free Counselling</span>
                 <ArrowRight className="w-5 h-5" />
@@ -121,26 +134,26 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
               <button
                 onClick={() => onNavigate('universities')}
-                className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-100 text-gray-900 font-heading font-semibold text-base rounded-2xl border border-gray-300 shadow-md transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white font-heading font-semibold text-base rounded-2xl border border-white/40 shadow-lg transition-all flex items-center justify-center gap-2"
               >
-                <GraduationCap className="w-5 h-5 text-[#8B1E2D]" />
+                <GraduationCap className="w-5 h-5 text-amber-300" />
                 <span>Explore Universities</span>
               </button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="pt-8 border-t border-gray-200 grid grid-cols-3 gap-4 text-center max-w-2xl mx-auto">
-              <div>
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-[#8B1E2D]">3,51,000+</div>
-                <div className="text-xs text-gray-600 font-medium">Students advised</div>
+            <div className="pt-4 sm:pt-6 border-t border-white/20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center max-w-2xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-lg divide-y sm:divide-y-0 sm:divide-x divide-white/15">
+              <div className="pb-2 sm:pb-0 sm:px-2">
+                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">3,51,000+</div>
+                <div className="text-xs text-gray-200 font-medium">Students Advised</div>
               </div>
-              <div>
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-[#8B1E2D]">1,274+</div>
-                <div className="text-xs text-gray-600 font-medium">Partner Universities (44 Countries)</div>
+              <div className="py-2 sm:py-0 sm:px-2">
+                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,274+</div>
+                <div className="text-xs text-gray-200 font-medium">Partner Universities (44 Countries)</div>
               </div>
-              <div>
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-[#8B1E2D]">1,00,000+</div>
-                <div className="text-xs text-gray-600 font-medium">Students placed</div>
+              <div className="pt-2 sm:pt-0 sm:px-2">
+                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,00,000+</div>
+                <div className="text-xs text-gray-200 font-medium">Students Placed</div>
               </div>
             </div>
 

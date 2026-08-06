@@ -99,7 +99,7 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
   ];
 
   return (
-    <section id="glimpse" className="relative py-16 sm:py-24 bg-slate-900 text-white overflow-hidden rounded-3xl my-8 mx-2 sm:mx-4 lg:mx-8 shadow-2xl">
+    <section id="glimpse" className="relative py-12 sm:py-20 bg-slate-900 text-white overflow-hidden rounded-3xl my-0 mx-2 sm:mx-4 lg:mx-8 shadow-2xl">
       {/* Dynamic Background Glow Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />

@@ -8,10 +8,8 @@ import {
   Mail, 
   ArrowRight, 
   CheckCircle2, 
-  Facebook, 
   Instagram, 
   Linkedin, 
-  Youtube,
   Send,
   Building2,
   Globe2
@@ -135,17 +133,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
             </div>
 
             <div className="flex items-center gap-3 pt-2">
-              <a href="#" aria-label="Follow TASA Grassroots on Facebook" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="Follow TASA Grassroots on Instagram" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <a 
+                href="https://www.instagram.com/tasagrassroots/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Follow TASA Grassroots on Instagram" 
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#E4405F] text-slate-300 hover:text-white flex items-center justify-center transition-colors shadow-xs"
+              >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" aria-label="Follow TASA Grassroots on LinkedIn" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+              <a 
+                href="https://www.linkedin.com/company/tasa-grassroots-global-education/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Follow TASA Grassroots on LinkedIn" 
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#0A66C2] text-slate-300 hover:text-white flex items-center justify-center transition-colors shadow-xs"
+              >
                 <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="Subscribe to TASA Grassroots on YouTube" className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-                <Youtube className="w-4 h-4" />
               </a>
             </div>
           </div>
