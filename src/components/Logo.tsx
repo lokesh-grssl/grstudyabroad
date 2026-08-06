@@ -8,30 +8,27 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ 
   className = '', 
-  variant = 'light',
   size = 'md' 
 }) => {
-  const isDark = variant === 'dark';
-
   const logoHeights = {
-    sm: 'h-4 sm:h-5',
-    md: 'h-6 sm:h-7',
-    lg: 'h-8 sm:h-10'
+    sm: 'h-6 sm:h-7',
+    md: 'h-9 sm:h-11',
+    lg: 'h-12 sm:h-16'
   };
-
-  const logoSrc = isDark ? '/logo-white.svg' : '/logo.svg';
 
   return (
     <div className={`inline-flex items-center shrink-0 select-none ${className}`}>
       <img 
-        src={logoSrc} 
-        alt="TASA | grassroots" 
-        className={`${logoHeights[size]} w-auto object-contain block`}
+        src="/tasa-logo.png" 
+        alt="TASA grassroots Study Abroad" 
+        className={`${logoHeights[size]} w-auto object-contain block drop-shadow-sm`}
         referrerPolicy="no-referrer"
       />
     </div>
   );
 };
+
+
 
 
 

@@ -340,7 +340,7 @@ export const BlogDetailView: React.FC<BlogDetailViewProps> = ({
                 Ready to Apply to your Dream University?
               </h3>
               <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                Get a free profile evaluation, application fee waivers, scholarship application assistance, and visa guidance with TASA Global.
+                Get a free profile evaluation, application fee waivers, scholarship application assistance, and visa guidance with TASA grassroots.
               </p>
             </div>
             {onOpenBookModal && (

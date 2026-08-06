@@ -279,7 +279,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-xs font-bold text-[#8B1E2D] uppercase tracking-widest">Proven Track Record</span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#222222]">
-            Why Students Trust TASA Global
+            Why Students Trust TASA grassroots
           </h2>
           <p className="text-gray-700 text-base font-semibold max-w-2xl mx-auto">
             36 years of getting students to campus — not a new promise, a long track record.
@@ -323,7 +323,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <Sparkles className="w-3.5 h-3.5 text-yellow-300" /> Save Up to 50% Tuition Fees
               </div>
               <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white">
-                TASA Global Pathway Programs
+                TASA grassroots Pathway Programs
               </h2>
               <p className="text-gray-300 text-sm leading-relaxed">
                 Study first in India with synchronized curriculum, transfer seamlessly to global partner universities, and graduate with full international degrees & post-study work permits.
