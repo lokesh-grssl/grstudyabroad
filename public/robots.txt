@@ -1,0 +1,6 @@
+# TASA Grassroots Global Education - Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: /sitemap.xml

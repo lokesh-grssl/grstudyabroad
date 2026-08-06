@@ -71,6 +71,17 @@ Provide professional, friendly, concise, and structured guidance. Include action
     res.json({ status: "ok", brand: "TASA–Grassroots Global Education" });
   });
 
+  // Serve robots.txt & sitemap.xml explicitly
+  app.get("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.sendFile(path.join(process.cwd(), "public", "robots.txt"));
+  });
+
+  app.get("/sitemap.xml", (req, res) => {
+    res.type("application/xml");
+    res.sendFile(path.join(process.cwd(), "public", "sitemap.xml"));
+  });
+
   // Vite middleware for development vs static serve for production
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
