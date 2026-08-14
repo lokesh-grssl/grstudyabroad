@@ -99,34 +99,34 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
   ];
 
   return (
-    <section id="glimpse" className="relative py-12 sm:py-20 bg-slate-900 text-white overflow-hidden rounded-3xl my-0 mx-2 sm:mx-4 lg:mx-8 shadow-2xl">
+    <section id="glimpse" className="relative py-10 sm:py-20 bg-slate-900 text-white overflow-hidden rounded-2xl sm:rounded-3xl my-0 mx-2 sm:mx-4 lg:mx-8 shadow-2xl">
       {/* Dynamic Background Glow Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         
         {/* Header Title Block */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-blue-500/20 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-red-400" />
-            <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-gray-200">
+        <div className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-blue-500/20 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <Sparkles className="w-4 h-4 text-red-400 shrink-0" />
+            <span className="text-[11px] sm:text-sm font-semibold tracking-wider uppercase text-gray-200">
               Grassroots Study Abroad At a Glimpse
             </span>
           </div>
 
-          <h2 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+          <h2 className="font-heading font-black text-2xl xs:text-3xl sm:text-5xl text-white tracking-tight leading-tight">
             Helping You Study Abroad with <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-300 to-amber-300">Confidence</span>
           </h2>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+          <p className="text-slate-300 text-xs sm:text-base leading-relaxed font-normal px-1">
             We bridge aspirations with world-class opportunities through an unmatched network of accredited universities, diverse programs, and personalized counselling.
           </p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {glimpseStats.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -137,36 +137,36 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 onClick={() => onNavigate && onNavigate(item.linkView)}
-                className="group relative bg-slate-800/80 backdrop-blur-xl border border-slate-700/80 hover:border-slate-500 p-6 sm:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 shadow-lg hover:shadow-2xl cursor-pointer flex flex-col justify-between overflow-hidden"
+                className="group relative bg-slate-800/80 backdrop-blur-xl border border-slate-700/80 hover:border-slate-500 p-5 sm:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1.5 active:scale-[0.99] shadow-lg hover:shadow-2xl cursor-pointer flex flex-col justify-between overflow-hidden"
               >
                 {/* Top Colored Accent Stripe */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient}`} />
 
-                <div className="space-y-4">
+                <div className="space-y-3.5 sm:space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/10 group-hover:bg-white/20 transition-colors">
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/10 group-hover:bg-white/20 transition-colors">
                       {item.badge}
                     </span>
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform`}>
-                      <Icon className="w-6 h-6" />
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform shrink-0`}>
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                   </div>
 
                   <div>
-                    <div className="font-heading font-black text-4xl sm:text-5xl tracking-tight text-white group-hover:text-red-400 transition-colors">
+                    <div className="font-heading font-black text-3xl sm:text-5xl tracking-tight text-white group-hover:text-red-400 transition-colors">
                       {item.stat}
                     </div>
-                    <div className="font-semibold text-lg sm:text-xl text-slate-100 mt-1 leading-snug">
+                    <div className="font-semibold text-base sm:text-xl text-slate-100 mt-1 leading-snug">
                       {item.subtext}
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-700/60 pt-3">
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-700/60 pt-2.5 sm:pt-3">
                     {item.detail}
                   </p>
                 </div>
 
-                <div className="mt-6 flex items-center gap-1 text-xs font-bold text-red-400 group-hover:text-red-300 transition-colors">
+                <div className="mt-4 sm:mt-6 flex items-center gap-1 text-xs font-bold text-red-400 group-hover:text-red-300 transition-colors">
                   <span>Explore Programs</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -176,12 +176,12 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
         </div>
 
         {/* Bottom Banner Callout */}
-        <div className="bg-gradient-to-r from-red-950/80 via-slate-800 to-blue-950/80 border border-slate-700/80 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-md">
+        <div className="bg-gradient-to-r from-red-950/80 via-slate-800 to-blue-950/80 border border-slate-700/80 rounded-2xl p-5 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 backdrop-blur-md">
           <div className="space-y-2 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 text-red-400 text-xs font-bold uppercase tracking-wider">
-              <CheckCircle2 className="w-4 h-4" /> 100% End-to-End Admission & Visa Guidance
+              <CheckCircle2 className="w-4 h-4 shrink-0" /> 100% End-to-End Admission & Visa Guidance
             </div>
-            <h3 className="font-heading font-bold text-xl sm:text-2xl text-white">
+            <h3 className="font-heading font-bold text-lg sm:text-2xl text-white">
               Ready to find your ideal program among 20,000+ choices?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
@@ -189,11 +189,11 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 shrink-0 w-full md:w-auto">
             {onOpenBookModal && (
               <button
                 onClick={onOpenBookModal}
-                className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-sm rounded-xl shadow-lg hover:shadow-red-900/40 transition-all text-center"
+                className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 active:from-red-700 active:to-rose-700 text-white font-bold text-sm rounded-xl shadow-lg hover:shadow-red-900/40 transition-all text-center min-h-[44px] flex items-center justify-center"
               >
                 Book Free Consultation
               </button>
@@ -201,7 +201,7 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
             {onNavigate && (
               <button
                 onClick={() => onNavigate('programs')}
-                className="w-full sm:w-auto px-6 py-3.5 bg-slate-700/80 hover:bg-slate-600 text-white font-bold text-sm rounded-xl border border-slate-600 transition-all text-center flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 bg-slate-700/80 hover:bg-slate-600 active:bg-slate-800 text-white font-bold text-sm rounded-xl border border-slate-600 transition-all text-center flex items-center justify-center gap-2 min-h-[44px]"
               >
                 <span>Search All Programs</span>
                 <ArrowRight className="w-4 h-4" />

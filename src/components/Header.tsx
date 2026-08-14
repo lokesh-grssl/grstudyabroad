@@ -128,17 +128,17 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Mobile Menu Toggle */}
-            <div className="flex xl:hidden items-center gap-2">
+            <div className="flex xl:hidden items-center gap-1.5 sm:gap-2">
               <button
                 onClick={onOpenSearchModal}
-                className="p-2 text-slate-700 hover:bg-slate-100 rounded-full"
+                className="w-10 h-10 flex items-center justify-center text-slate-700 hover:text-red-600 hover:bg-slate-100 active:bg-slate-200 rounded-full transition-colors"
                 aria-label="Open Mobile Search"
               >
                 <Search className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-slate-800 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 rounded-full transition-colors"
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -150,10 +150,10 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="xl:hidden mt-2 bg-white/98 backdrop-blur-2xl border border-slate-200/90 rounded-3xl p-4 sm:p-5 shadow-2xl shadow-slate-900/15 space-y-3.5 animate-in fade-in slide-in-from-top-2 duration-200 max-w-7xl mx-auto overflow-hidden">
+          <div className="xl:hidden mt-2 bg-white/98 backdrop-blur-2xl border border-slate-200/90 rounded-3xl p-4 sm:p-5 shadow-2xl shadow-slate-900/15 space-y-3.5 animate-in fade-in slide-in-from-top-2 duration-200 max-w-7xl mx-auto overflow-hidden max-h-[82vh] flex flex-col justify-between">
             
             {/* Navigation List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 overflow-y-auto pr-0.5 max-h-[60vh]">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = currentView === item.view;
@@ -167,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({
                       onNavigate(item.view);
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex items-center justify-between w-full px-3.5 py-3 rounded-2xl text-xs font-bold transition-all text-left ${
+                    className={`flex items-center justify-between w-full px-3.5 py-3 rounded-2xl text-xs font-bold transition-all text-left min-h-[46px] ${
                       isActive
                         ? 'bg-red-50/90 text-red-600 border-l-4 border-red-600 font-extrabold shadow-2xs'
                         : 'text-slate-700 hover:bg-slate-50 hover:text-red-600 border border-transparent'
@@ -181,7 +181,7 @@ export const Header: React.FC<HeaderProps> = ({
                       }`}>
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="truncate">{item.label}</span>
+                      <span className="truncate text-xs font-bold">{item.label}</span>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
@@ -198,13 +198,13 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* Bottom Actions */}
-            <div className="pt-2.5 border-t border-slate-100">
+            <div className="pt-2.5 border-t border-slate-100 shrink-0">
               <button
                 onClick={() => {
                   onOpenBookModal();
                   setMobileMenuOpen(false);
                 }}
-                className="w-full py-3.5 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white rounded-2xl font-bold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                className="w-full py-3.5 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white rounded-2xl font-bold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 flex items-center justify-center gap-2 transition-all active:scale-[0.98] min-h-[48px]"
               >
                 <span>Book Free Counselling</span>
                 <ArrowRight className="w-4 h-4" />

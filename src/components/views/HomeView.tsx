@@ -87,8 +87,8 @@ export const HomeView: React.FC<HomeViewProps> = ({
     <div className="space-y-8 sm:space-y-12 pb-16">
       
       {/* 1. HERO SECTION */}
-      <section className="px-2 sm:px-4 lg:px-8 pt-4 pb-0">
-        <div className="relative rounded-3xl overflow-hidden min-h-[520px] sm:min-h-[580px] flex items-center justify-center p-6 sm:p-12 lg:p-16 border border-gray-200/80 shadow-2xl">
+      <section className="px-2 sm:px-4 lg:px-8 pt-3 sm:pt-4 pb-0">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[480px] sm:min-h-[580px] flex items-center justify-center p-5 sm:p-12 lg:p-16 border border-gray-200/80 shadow-2xl">
           {/* Background Video - Faststart Web-Optimized */}
           <video
             ref={videoRef}
@@ -106,11 +106,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </video>
           
           {/* Natural dark overlay to maintain crisp text contrast on the video */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/55" />
 
-          <div className="relative z-10 max-w-4xl mx-auto space-y-6 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto space-y-5 sm:space-y-6 text-center">
             
-            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15] drop-shadow-md">
+            <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.18] sm:leading-[1.15] drop-shadow-md">
               Discover the Right <br />
               <span className="font-playfair italic font-medium tracking-normal text-amber-300 relative inline-block px-1 drop-shadow-sm">
                 Country, Course & University
@@ -120,42 +120,42 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </span>
             </h1>
 
-            <p className="text-gray-100 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto font-medium drop-shadow-xs">
+            <p className="text-gray-100 text-xs sm:text-base lg:text-lg max-w-2xl leading-relaxed mx-auto font-medium drop-shadow-xs px-2">
               Admissions, Scholarships, Visa Assistance, Education Loans, Accommodation, Career Guidance and Post-arrival Support.
             </p>
 
             {/* Action CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-1 sm:pt-2 w-full max-w-md mx-auto sm:max-w-none">
               <button
                 onClick={onOpenBookModal}
-                className="w-full sm:w-auto px-8 py-4 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-heading font-bold text-base rounded-2xl shadow-xl hover:shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-heading font-bold text-sm sm:text-base rounded-2xl shadow-xl hover:shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 min-h-[48px]"
               >
                 <span>Book Free Counselling</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               <button
                 onClick={() => onNavigate('universities')}
-                className="w-full sm:w-auto px-8 py-4 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white font-heading font-semibold text-base rounded-2xl border border-white/40 shadow-lg transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-7 sm:px-8 py-3.5 sm:py-4 bg-white/20 backdrop-blur-md hover:bg-white/30 text-white font-heading font-semibold text-sm sm:text-base rounded-2xl border border-white/40 shadow-lg transition-all flex items-center justify-center gap-2 min-h-[48px]"
               >
-                <GraduationCap className="w-5 h-5 text-amber-300" />
+                <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
                 <span>Explore Universities</span>
               </button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="pt-4 sm:pt-6 border-t border-white/20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center max-w-3xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-lg divide-y sm:divide-y-0 sm:divide-x divide-white/15">
-              <div className="pb-3 sm:pb-0 sm:px-3 flex flex-col justify-center">
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,500+</div>
-                <div className="text-xs sm:text-sm text-gray-200 font-medium mt-0.5">Partner Universities</div>
+            <div className="pt-3 sm:pt-6 border-t border-white/20 grid grid-cols-3 gap-1 sm:gap-4 text-center max-w-3xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-3 sm:p-5 border border-white/20 shadow-lg divide-x divide-white/15">
+              <div className="px-1 sm:px-3 flex flex-col justify-center">
+                <div className="font-heading font-extrabold text-lg sm:text-3xl text-amber-300">1,500+</div>
+                <div className="text-[10px] sm:text-sm text-gray-200 font-medium mt-0.5 leading-tight">Partner Universities</div>
               </div>
-              <div className="py-3 sm:py-0 sm:px-3 flex flex-col justify-center">
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,00,000+</div>
-                <div className="text-xs sm:text-sm text-gray-200 font-medium mt-0.5">Course Options</div>
+              <div className="px-1 sm:px-3 flex flex-col justify-center">
+                <div className="font-heading font-extrabold text-lg sm:text-3xl text-amber-300">1,00,000+</div>
+                <div className="text-[10px] sm:text-sm text-gray-200 font-medium mt-0.5 leading-tight">Course Options</div>
               </div>
-              <div className="pt-3 sm:pt-0 sm:px-3 flex flex-col justify-center">
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">45+</div>
-                <div className="text-xs sm:text-sm text-gray-200 font-medium mt-0.5">Countries with Partner Institutions</div>
+              <div className="px-1 sm:px-3 flex flex-col justify-center">
+                <div className="font-heading font-extrabold text-lg sm:text-3xl text-amber-300">45+</div>
+                <div className="text-[10px] sm:text-sm text-gray-200 font-medium mt-0.5 leading-tight">Global Countries</div>
               </div>
             </div>
 

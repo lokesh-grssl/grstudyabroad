@@ -524,55 +524,88 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pb-20 pt-4">
       
       {/* Page Banner Header */}
-      <div className="relative rounded-3xl bg-gradient-to-r from-[#8B1E2D] via-[#A3283B] to-[#1E293B] p-6 sm:p-10 text-white overflow-hidden shadow-xl">
+      <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#8B1E2D] via-[#A3283B] to-[#1E293B] p-5 sm:p-10 text-white overflow-hidden shadow-xl">
         <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
         
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-amber-200">
-            <GraduationCap className="w-4 h-4 text-amber-300" />
+        <div className="relative z-10 max-w-3xl space-y-3.5 sm:space-y-4">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-200">
+            <GraduationCap className="w-4 h-4 text-amber-300 shrink-0" />
             <span>Master Global Directory • 1,274 Partner Institutions</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+          <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-5xl text-white leading-tight">
             Explore 1,274 Partner Universities across 44 Countries
           </h1>
 
-          <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
+          <p className="text-gray-200 text-xs sm:text-base leading-relaxed">
             Search direct tie-up institutions with fast-track conditional offer letters, scholarship evaluations, and English proficiency waivers through Grassroots Study Abroad.
           </p>
 
-          <div className="pt-2 flex flex-wrap gap-3 items-center text-xs text-white/90 font-medium">
-            <span className="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-xl border border-white/10">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Application Fee Waivers Eligible
+          <div className="pt-1 sm:pt-2 flex flex-wrap gap-2 sm:gap-3 items-center text-[11px] sm:text-xs text-white/90 font-medium">
+            <span className="flex items-center gap-1.5 bg-black/20 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/10">
+              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" /> Application Fee Waivers Eligible
             </span>
-            <span className="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-xl border border-white/10">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Fast-Track Offer Letters
+            <span className="flex items-center gap-1.5 bg-black/20 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/10">
+              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" /> Fast-Track Offer Letters
             </span>
-            <span className="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-xl border border-white/10">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" /> IELTS Waiver Accepted
+            <span className="flex items-center gap-1.5 bg-black/20 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/10">
+              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" /> IELTS Waiver Accepted
             </span>
           </div>
         </div>
       </div>
 
-      {/* Mobile Sidebar Filter Drawer Button */}
-      <div className="lg:hidden flex items-center justify-between bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
-        <div className="flex items-center gap-2 text-xs font-bold text-gray-800">
-          <SlidersHorizontal className="w-4 h-4 text-[#8B1E2D]" />
-          <span>Showing {totalItems} Universities</span>
-          {activeFiltersCount > 0 && (
-            <span className="bg-[#8B1E2D] text-white text-[10px] px-2 py-0.5 rounded-full">
-              {activeFiltersCount} active
-            </span>
-          )}
+      {/* Mobile Quick Horizontal Filter & Drawer Toggle Bar */}
+      <div className="lg:hidden space-y-3">
+        <div className="flex items-center justify-between bg-white p-3.5 sm:p-4 rounded-2xl border border-gray-200 shadow-sm gap-2">
+          <div className="flex items-center gap-2 text-xs font-bold text-gray-800 min-w-0">
+            <SlidersHorizontal className="w-4 h-4 text-[#8B1E2D] shrink-0" />
+            <span className="truncate">Showing {totalItems} Unis</span>
+            {activeFiltersCount > 0 && (
+              <span className="bg-[#8B1E2D] text-white text-[10px] px-2 py-0.5 rounded-full shrink-0 font-extrabold">
+                {activeFiltersCount} active
+              </span>
+            )}
+          </div>
+          <button
+            onClick={() => setMobileFilterOpen(true)}
+            className="px-4 py-2.5 bg-[#8B1E2D] hover:bg-[#721824] active:bg-[#5e131d] text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm shrink-0 min-h-[42px]"
+          >
+            <Filter className="w-3.5 h-3.5" />
+            <span>Filter Options</span>
+          </button>
         </div>
-        <button
-          onClick={() => setMobileFilterOpen(true)}
-          className="px-4 py-2 bg-[#8B1E2D] text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm"
-        >
-          <Filter className="w-3.5 h-3.5" />
-          <span>Filter Sidebar</span>
-        </button>
+
+        {/* Mobile Horizontal Presets Tray */}
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 px-0.5">
+          {[
+            { id: 'all', label: 'All 1,274', icon: GraduationCap },
+            { id: 'top', label: 'Top Ranked', icon: Trophy },
+            { id: 'public', label: 'Public', icon: Landmark },
+            { id: 'private', label: 'Private', icon: Building2 },
+            { id: 'ielts', label: 'IELTS Waiver', icon: Zap },
+            { id: 'scholarship', label: 'Scholarships', icon: Gift },
+            { id: 'budget', label: 'Budget Friendly', icon: DollarSign },
+            { id: 'pathway', label: 'Pathways', icon: Sprout },
+          ].map(p => {
+            const Icon = p.icon;
+            const isSelected = selectedPreset === p.id;
+            return (
+              <button
+                key={p.id}
+                onClick={() => handleFilterChange(setSelectedPreset, p.id)}
+                className={`px-3 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition-all flex items-center gap-1.5 shrink-0 ${
+                  isSelected
+                    ? 'bg-[#8B1E2D] text-white shadow-xs'
+                    : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-[#8B1E2D]'}`} />
+                <span>{p.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* MAIN TWO-COLUMN SIDEBAR LAYOUT */}

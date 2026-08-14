@@ -36,8 +36,8 @@ export const DestinationsView: React.FC<DestinationsViewProps> = ({
     <div className="space-y-12 pb-16">
       
       {/* Country Selection Tab Bar */}
-      <div className="bg-white border-b border-[#E8E8E8] sticky top-[73px] z-30 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto py-3">
+      <div className="bg-white border-b border-[#E8E8E8] sticky top-[64px] sm:top-[73px] z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto no-scrollbar py-2.5 sm:py-3">
           {DESTINATIONS.map((d) => (
             <button
               key={d.id}
@@ -45,14 +45,14 @@ export const DestinationsView: React.FC<DestinationsViewProps> = ({
                 setSelectedDestId(d.id);
                 setOpenFaqIndex(0);
               }}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold shrink-0 transition-all flex items-center gap-2 ${
+              className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold shrink-0 transition-all flex items-center gap-2 min-h-[40px] ${
                 selectedDestId === d.id
                   ? 'bg-[#8B1E2D] text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               <CountryFlag code={d.code} country={d.name} size="sm" />
-              <span>{d.name}</span>
+              <span className="whitespace-nowrap">{d.name}</span>
             </button>
           ))}
         </div>
@@ -60,29 +60,29 @@ export const DestinationsView: React.FC<DestinationsViewProps> = ({
 
       {/* Country Hero Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[360px] sm:h-[420px]">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl h-[360px] sm:h-[420px]">
           <img 
             src={currentDest.heroImage} 
             alt={currentDest.name}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10" />
 
-          <div className="absolute bottom-8 left-6 right-6 text-white space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+          <div className="absolute bottom-5 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 text-white space-y-2.5 sm:space-y-3 max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider">
               <CountryFlag code={currentDest.code} country={currentDest.name} size="xs" />
               <span>Study Destination Guide</span>
             </div>
-            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-white">
+            <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-5xl text-white leading-tight">
               Study in {currentDest.name}
             </h1>
-            <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+            <p className="text-white/90 text-xs sm:text-base leading-relaxed line-clamp-3 sm:line-clamp-none">
               {currentDest.longDescription}
             </p>
-            <div className="pt-2 flex items-center gap-4">
+            <div className="pt-1 sm:pt-2 flex items-center gap-4">
               <button
                 onClick={onOpenBookModal}
-                className="px-6 py-3 bg-[#8B1E2D] hover:bg-white hover:text-[#8B1E2D] text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all"
+                className="w-full sm:w-auto px-6 py-3 bg-[#8B1E2D] hover:bg-white hover:text-[#8B1E2D] text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all min-h-[44px] flex items-center justify-center"
               >
                 Book Counselling for {currentDest.name}
               </button>
@@ -92,20 +92,20 @@ export const DestinationsView: React.FC<DestinationsViewProps> = ({
       </section>
 
       {/* Quick Financials & Work Rights Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
           <div className="text-[10px] font-bold text-gray-400 uppercase">Avg UG Tuition</div>
-          <div className="font-heading font-extrabold text-base text-[#8B1E2D]">{currentDest.avgTuitionUG}</div>
+          <div className="font-heading font-extrabold text-sm sm:text-base text-[#8B1E2D]">{currentDest.avgTuitionUG}</div>
         </div>
-        <div className="bg-white p-5 rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
+        <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
           <div className="text-[10px] font-bold text-gray-400 uppercase">Avg PG Tuition</div>
-          <div className="font-heading font-extrabold text-base text-[#8B1E2D]">{currentDest.avgTuitionPG}</div>
+          <div className="font-heading font-extrabold text-sm sm:text-base text-[#8B1E2D]">{currentDest.avgTuitionPG}</div>
         </div>
-        <div className="bg-white p-5 rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
+        <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
           <div className="text-[10px] font-bold text-gray-400 uppercase">Avg Living Cost</div>
-          <div className="font-heading font-extrabold text-base text-gray-800">{currentDest.avgLivingCost}</div>
+          <div className="font-heading font-extrabold text-sm sm:text-base text-gray-800">{currentDest.avgLivingCost}</div>
         </div>
-        <div className="bg-white p-5 rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1">
+        <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-[#E8E8E8] shadow-sm space-y-1 col-span-2 sm:col-span-1">
           <div className="text-[10px] font-bold text-gray-400 uppercase">Top Student Cities</div>
           <div className="font-heading font-bold text-xs text-gray-800">{currentDest.topCities.join(', ')}</div>
         </div>

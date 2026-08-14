@@ -76,3 +76,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #E31B23;
 }
+
+/* Hide scrollbars for touch-friendly horizontal trays while keeping scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile touch target and interaction polish */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+

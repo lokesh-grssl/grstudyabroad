@@ -50,38 +50,39 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
     : SCHOLARSHIPS.slice(0, 3);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[85vh] flex flex-col border border-[#E8E8E8] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-4 sm:pt-16 px-2 sm:px-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl max-w-3xl w-full max-h-[92vh] sm:max-h-[85vh] flex flex-col border border-[#E8E8E8] overflow-hidden">
         
         {/* Search Header */}
-        <div className="p-4 sm:p-6 border-b border-gray-100 flex items-center gap-3 bg-[#FAFAFA]">
-          <Search className="w-6 h-6 text-[#8B1E2D] shrink-0" />
+        <div className="p-3.5 sm:p-6 border-b border-gray-100 flex items-center gap-2.5 sm:gap-3 bg-[#FAFAFA]">
+          <Search className="w-5 h-5 sm:w-6 sm:h-6 text-[#8B1E2D] shrink-0" />
           <input
             type="text"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search universities, courses, destinations, or scholarships (e.g. Royal Roads, MBA, Canada)..."
-            className="w-full bg-transparent text-gray-900 placeholder-gray-400 font-medium text-base focus:outline-none"
+            placeholder="Search universities, courses, destinations, scholarships..."
+            className="w-full bg-transparent text-gray-900 placeholder-gray-400 font-medium text-sm sm:text-base focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 text-gray-400 hover:text-gray-600 text-xs bg-gray-200 rounded-full"
+              className="px-2 py-1 text-gray-400 hover:text-gray-600 active:text-gray-900 text-xs bg-gray-200 rounded-lg min-h-[32px]"
             >
               Clear
             </button>
           )}
           <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-800 hover:bg-gray-200 rounded-xl transition-colors shrink-0"
+            className="p-2 text-gray-500 hover:text-gray-800 active:text-gray-900 hover:bg-gray-200 rounded-xl transition-colors shrink-0 min-h-[40px] min-w-[40px] flex items-center justify-center"
+            aria-label="Close search"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Results Body */}
-        <div className="p-6 overflow-y-auto space-y-8 divide-y divide-gray-100">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-6 sm:space-y-8 divide-y divide-gray-100">
           
           {/* Section: Destinations */}
           {filteredDestinations.length > 0 && (

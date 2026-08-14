@@ -290,17 +290,17 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                     </div>
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between">
+                  <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-sm rounded-xl flex items-center gap-1.5 transition-colors"
+                      className="px-4 py-3 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 text-gray-700 font-semibold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 transition-colors min-h-[44px]"
                     >
                       <ArrowLeft className="w-4 h-4" /> Back to Study Goals
                     </button>
                     <button
                       type="submit"
-                      className="px-8 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-red-600/30 hover:shadow-red-600/50"
+                      className="px-8 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-lg shadow-red-600/30 hover:shadow-red-600/50 min-h-[44px] flex items-center justify-center text-center"
                     >
                       Confirm Booking
                     </button>
