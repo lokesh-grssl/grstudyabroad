@@ -98,7 +98,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
       <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#E8E8E8] relative">
         
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#8B1E2D] to-[#6C1521] text-white p-6 rounded-t-3xl relative">
+        <div className="bg-gradient-to-r from-[#E31B23] to-[#C9141B] text-white p-6 rounded-t-3xl relative">
           <button
             onClick={onClose}
             className="absolute top-5 right-5 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
@@ -141,7 +141,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                 Counselling Session Reserved!
               </h3>
               <p className="text-gray-600 text-sm max-w-md mx-auto">
-                Thank you, <span className="font-semibold text-[#8B1E2D]">{formData.fullName}</span>! Our senior study abroad counsellor will contact you at <span className="font-semibold">{formData.phone}</span> within 2 hours.
+                Thank you, <span className="font-semibold text-[#E31B23]">{formData.fullName}</span>! Our senior study abroad counsellor will contact you at <span className="font-semibold">{formData.phone}</span> within 2 hours.
               </p>
               
               <div className="bg-[#FAFAFA] p-4 rounded-2xl border border-gray-200 text-left text-xs space-y-2 max-w-md mx-auto">
@@ -161,7 +161,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
 
               <button
                 onClick={handleReset}
-                className="mt-6 px-8 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-sm rounded-xl shadow-lg transition-all"
+                className="mt-6 px-8 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all"
               >
                 Done
               </button>
@@ -173,7 +173,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
               {step === 1 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
                   <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2 pb-2 border-b border-gray-100">
-                    <Globe className="w-5 h-5 text-[#8B1E2D]" /> Step 1: Study Goals
+                    <Globe className="w-5 h-5 text-[#E31B23]" /> Step 1: Study Goals
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -184,7 +184,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                       <select
                         value={formData.preferredDestination}
                         onChange={(e) => setFormData({ ...formData, preferredDestination: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#E31B23] focus:outline-none"
                       >
                         {destinations.map(d => <option key={d} value={d}>{d}</option>)}
                       </select>
@@ -197,7 +197,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                       <select
                         value={formData.studyLevel}
                         onChange={(e) => setFormData({ ...formData, studyLevel: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                        className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#E31B23] focus:outline-none"
                       >
                         {levels.map(l => <option key={l} value={l}>{l}</option>)}
                       </select>
@@ -211,7 +211,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                     <select
                       value={formData.preferredIntake}
                       onChange={(e) => setFormData({ ...formData, preferredIntake: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                      className="w-full px-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#E31B23] focus:outline-none"
                     >
                       {intakes.map(i => <option key={i} value={i}>{i}</option>)}
                     </select>
@@ -221,7 +221,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="px-6 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-sm rounded-xl flex items-center gap-2 transition-all shadow-md"
+                      className="px-6 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-sm rounded-xl flex items-center gap-2 transition-all shadow-lg shadow-red-600/30 hover:shadow-red-600/50"
                     >
                       <span>Next: Contact Information</span>
                       <ArrowRight className="w-4 h-4" />
@@ -234,7 +234,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
               {step === 2 && (
                 <div className="space-y-4 animate-in fade-in duration-200">
                   <h3 className="font-heading font-bold text-lg text-[#222222] flex items-center gap-2 pb-2 border-b border-gray-100">
-                    <User className="w-5 h-5 text-[#8B1E2D]" /> Step 2: Contact Information
+                    <User className="w-5 h-5 text-[#E31B23]" /> Step 2: Contact Information
                   </h3>
 
                   <div>
@@ -249,7 +249,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                         placeholder="e.g. Rahul Sharma"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                        className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#E31B23] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -267,7 +267,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                           placeholder="rahul@example.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                          className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#E31B23] focus:outline-none"
                         />
                       </div>
                     </div>
@@ -284,7 +284,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                           placeholder="+91 84959 70819"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#8B1E2D] focus:outline-none"
+                          className="w-full pl-10 pr-4 py-3 bg-[#FAFAFA] border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#E31B23] focus:outline-none"
                         />
                       </div>
                     </div>
@@ -300,7 +300,7 @@ export const BookCounsellingModal: React.FC<BookCounsellingModalProps> = ({
                     </button>
                     <button
                       type="submit"
-                      className="px-8 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-sm rounded-xl transition-all shadow-lg hover:shadow-xl"
+                      className="px-8 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-red-600/30 hover:shadow-red-600/50"
                     >
                       Confirm Booking
                     </button>

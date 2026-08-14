@@ -29,7 +29,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenBookModal }) => {
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <span className="bg-[#8B1E2D]/10 text-[#8B1E2D] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+        <span className="bg-[#E31B23]/10 text-[#E31B23] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
           Spot Admissions & Education Fairs
         </span>
         <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-[#222222]">
@@ -48,7 +48,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenBookModal }) => {
             <div
               key={event.id}
               className={`bg-white rounded-3xl border transition-all p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
-                event.isFeatured ? 'border-[#8B1E2D] shadow-xl ring-2 ring-[#8B1E2D]/20' : 'border-[#E8E8E8] shadow-soft'
+                event.isFeatured ? 'border-[#E31B23] shadow-xl ring-2 ring-[#E31B23]/20' : 'border-[#E8E8E8] shadow-soft'
               }`}
             >
               
@@ -58,14 +58,14 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenBookModal }) => {
                   alt={event.title}
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute top-3 left-3 bg-[#8B1E2D] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">
+                <span className="absolute top-3 left-3 bg-[#E31B23] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">
                   {event.type}
                 </span>
               </div>
 
               <div className="lg:col-span-8 space-y-4">
                 <div className="space-y-2">
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-[#8B1E2D]">
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-[#E31B23]">
                     <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" /> {event.date}</span>
                     <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {event.time}</span>
                   </div>
@@ -75,7 +75,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenBookModal }) => {
                   </h3>
 
                   <div className="flex items-center gap-2 text-xs text-gray-600">
-                    <MapPin className="w-4 h-4 text-[#8B1E2D] shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#E31B23] shrink-0" />
                     <span className="font-semibold">{event.location}</span>
                   </div>
 
@@ -84,7 +84,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenBookModal }) => {
                   </p>
 
                   <div className="bg-[#FAFAFA] p-3 rounded-xl border border-gray-100 text-xs text-gray-700 flex items-center gap-2">
-                    <User className="w-4 h-4 text-[#8B1E2D]" />
+                    <User className="w-4 h-4 text-[#E31B23]" />
                     <span>Keynote Speaker: <strong className="text-gray-900">{event.speaker}</strong> ({event.speakerRole})</span>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ onOpenBookModal }) => {
                   ) : (
                     <button
                       onClick={() => handleRsvp(event.id)}
-                      className="w-full sm:w-auto px-8 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all"
+                      className="w-full sm:w-auto px-8 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all"
                     >
                       Reserve Free Pass
                     </button>

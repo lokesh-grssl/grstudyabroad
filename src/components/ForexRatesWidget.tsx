@@ -78,7 +78,7 @@ export const ForexRatesWidget: React.FC<ForexRatesWidgetProps> = ({
             onClick={() => onCurrencyModeChange('dual')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
               currencyMode === 'dual'
-                ? 'bg-[#8B1E2D] text-white shadow-xs'
+                ? 'bg-[#E31B23] text-white shadow-xs font-black shadow-red-600/30'
                 : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
             }`}
           >
@@ -89,7 +89,7 @@ export const ForexRatesWidget: React.FC<ForexRatesWidgetProps> = ({
             onClick={() => onCurrencyModeChange('inr')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
               currencyMode === 'inr'
-                ? 'bg-[#8B1E2D] text-white shadow-xs'
+                ? 'bg-[#E31B23] text-white shadow-xs font-black shadow-red-600/30'
                 : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
             }`}
           >
@@ -100,7 +100,7 @@ export const ForexRatesWidget: React.FC<ForexRatesWidgetProps> = ({
             onClick={() => onCurrencyModeChange('native')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
               currencyMode === 'native'
-                ? 'bg-[#8B1E2D] text-white shadow-xs'
+                ? 'bg-[#E31B23] text-white shadow-xs font-black shadow-red-600/30'
                 : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
             }`}
           >

@@ -42,7 +42,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `TASA Grassroots - ${activeTab.toUpperCase()}`,
+        title: `Grassroots Study Abroad - ${activeTab.toUpperCase()}`,
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -67,7 +67,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
             {activeTab === 'cookies' && 'Cookie Policy & Web Analytics Transparency'}
           </h1>
           <p className="text-gray-600 text-sm sm:text-base">
-            Grassroots Solutions & Services Pvt. Ltd. (TASA Grassroots) is committed to transparency, compliance with global data privacy frameworks (GDPR, DPDP Act 2023), and upholding ethical study abroad advisory standards.
+            Grassroots Solutions & Services Pvt. Ltd. (Grassroots Study Abroad) is committed to transparency, compliance with global data privacy frameworks (GDPR, DPDP Act 2023), and upholding ethical study abroad advisory standards.
           </p>
           <div className="text-xs text-gray-500 pt-1 flex items-center justify-center gap-4">
             <span><strong>Effective Date:</strong> January 1, 2026</span>
@@ -133,7 +133,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 <div className="space-y-1">
                   <h3 className="font-heading font-bold text-[#8B1E2D] text-base">Student Privacy Commitment</h3>
                   <p className="text-xs text-rose-950/80">
-                    At TASA Grassroots, we handle highly sensitive academic transcripts, passport data, and financial records for foreign university admissions and visa applications. We strictly adhere to India’s Digital Personal Data Protection Act (DPDP) 2023, EU General Data Protection Regulation (GDPR), UK Data Protection Act, and FERPA standards.
+                    At Grassroots Study Abroad, we handle highly sensitive academic transcripts, passport data, and financial records for foreign university admissions and visa applications. We strictly adhere to India’s Digital Personal Data Protection Act (DPDP) 2023, EU General Data Protection Regulation (GDPR), UK Data Protection Act, and FERPA standards.
                   </p>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   <li><strong>Academic Records:</strong> Grade 10/12 Marksheets, Bachelor’s/Master’s Degree Transcripts, Provisional Certificates, Backlog Summaries, Statement of Purpose (SOP), Letters of Recommendation (LOR), and Resume/CV.</li>
                   <li><strong>Standardized Language & Test Scores:</strong> Official score cards for IELTS, TOEFL iBT, PTE Academic, Duolingo, GRE, GMAT, SAT, or ACT.</li>
                   <li><strong>Financial & Visa Documentation:</strong> Bank Statements, Fixed Deposit Certificates, Income Tax Returns (ITR) of Sponsors, Education Loan Sanction Letters, and Affidavits of Support required for CAS (UK), I-20 (USA), CAQ/Study Permit (Canada), or APS (Germany).</li>
-                  <li><strong>Technical & Digital Footprint:</strong> IP Address, Browser type, portal navigation behavior, and AI Advisor query history when accessing tasagrassroots.com.</li>
+                  <li><strong>Technical & Digital Footprint:</strong> IP Address, Browser type, portal navigation behavior, and AI Advisor query history when accessing grstudyabroad.com.</li>
                 </ul>
               </section>
 
@@ -201,7 +201,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   3. Data Sharing & Third-Party Disclosure
                 </h2>
                 <p>
-                  TASA Grassroots <strong>NEVER sells, rents, or monetizes student data</strong>. Data is shared exclusively with accredited entities necessary to execute your study abroad application:
+                  Grassroots Study Abroad <strong>NEVER sells, rents, or monetizes student data</strong>. Data is shared exclusively with accredited entities necessary to execute your study abroad application:
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-600">
                   <li><strong>Foreign Universities & Educational Institutions:</strong> Official admissions portals, international recruitment offices, and centralized application systems (e.g. UCAS, Uni-Assist).</li>
@@ -221,7 +221,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 </p>
                 <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/60 space-y-2 text-xs">
                   <p><strong>Retention Period:</strong> Student records are retained for up to 5 years following intake completion to support post-arrival support, alumni tracking, and legal audit compliance.</p>
-                  <p><strong>Your Rights:</strong> Under the DPDP Act 2023 & GDPR, you have the right to request access to your personal data, rectify inaccuracies, request deletion (right to be forgotten) prior to official university submission, or withdraw consent at any time by emailing <a href="mailto:privacy@tasagrassroots.com" className="text-[#8B1E2D] font-bold underline">privacy@tasagrassroots.com</a>.</p>
+                  <p><strong>Your Rights:</strong> Under the DPDP Act 2023 & GDPR, you have the right to request access to your personal data, rectify inaccuracies, request deletion (right to be forgotten) prior to official university submission, or withdraw consent at any time by emailing <a href="mailto:privacy@grstudyabroad.com" className="text-[#8B1E2D] font-bold underline">privacy@grstudyabroad.com</a>.</p>
                 </div>
               </section>
 
@@ -237,7 +237,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 <div className="space-y-1">
                   <h3 className="font-heading font-bold text-amber-900 text-base">Service Agreement Overview</h3>
                   <p className="text-xs text-amber-950/80">
-                    By registering for counselling, submitting documents, or availing overseas education advisories from Grassroots Solutions & Services Pvt Ltd (TASA Grassroots), students and parents agree to these binding Terms & Conditions.
+                    By registering for counselling, submitting documents, or availing overseas education advisories from Grassroots Solutions & Services Pvt Ltd (Grassroots Study Abroad), students and parents agree to these binding Terms & Conditions.
                   </p>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   1. Scope of Educational Advisory Services
                 </h2>
                 <p>
-                  TASA Grassroots provides end-to-end foreign education consulting services including:
+                  Grassroots Study Abroad provides end-to-end foreign education consulting services including:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 text-xs text-slate-600">
                   <li>Profile evaluation and career pathway mapping based on academic merit and budget constraints.</li>
@@ -281,7 +281,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                       Deadline Adherence & Communication
                     </div>
                     <p className="text-xs text-slate-600">
-                      Students are responsible for submitting required documents at least 15 business days prior to university/scholarship deadlines. TASA Grassroots is not liable for missed intakes caused by delayed document submission from the student’s side.
+                      Students are responsible for submitting required documents at least 15 business days prior to university/scholarship deadlines. Grassroots Study Abroad is not liable for missed intakes caused by delayed document submission from the student’s side.
                     </p>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   Students explicitly acknowledge and agree that:
                 </p>
                 <ul className="list-disc pl-5 space-y-2 text-xs text-slate-600">
-                  <li><strong>Sole Admissions Authority:</strong> University admission offers, course credits, fee waivers, and scholarship awards are decided solely by foreign university academic committees. TASA Grassroots acts as an official advisory channel and does NOT issue offer letters directly.</li>
+                  <li><strong>Sole Admissions Authority:</strong> University admission offers, course credits, fee waivers, and scholarship awards are decided solely by foreign university academic committees. Grassroots Study Abroad acts as an official advisory channel and does NOT issue offer letters directly.</li>
                   <li><strong>Sole Visa Authority:</strong> Foreign visa approval or refusal decisions are governed strictly by sovereign government consular officers (UKVI, US Embassy, IRCC, Australian High Commission). No education agency can guarantee a 100% visa grant.</li>
                 </ul>
               </section>
@@ -305,12 +305,12 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   4. Advisory Fees, Professional Charges & Refunds
                 </h2>
                 <p className="text-xs text-slate-600">
-                  TASA Grassroots operates as a professional education consulting firm. All counselling, profile evaluation, university application processing, SOP editorial review, and visa filing support services are subject to applicable professional advisory fees:
+                  Grassroots Study Abroad operates as a professional education consulting firm. All counselling, profile evaluation, university application processing, SOP editorial review, and visa filing support services are subject to applicable professional advisory fees:
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-600">
                   <li>All service fee structures, retainer charges, and package terms are communicated transparently and agreed upon in writing prior to service initiation.</li>
                   <li>Direct third-party costs (University application fees, WES credential evaluations, VFS visa filing fees, SEVIS fees, IELTS/TOEFL exam fees) are payable directly to official providers/institutions and are strictly non-refundable.</li>
-                  <li>Advisory and service fees paid to TASA Grassroots are non-refundable once documentation work or application processing has commenced.</li>
+                  <li>Advisory and service fees paid to Grassroots Study Abroad are non-refundable once documentation work or application processing has commenced.</li>
                 </ul>
               </section>
 
@@ -326,7 +326,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 <div className="space-y-1">
                   <h3 className="font-heading font-bold text-[#8B1E2D] text-base">Important Disclosures & Legal Notice</h3>
                   <p className="text-xs text-rose-950/80">
-                    The information provided on tasagrassroots.com, marketing materials, and counselling sessions is for general informational and educational guidance purposes only.
+                    The information provided on grstudyabroad.com, marketing materials, and counselling sessions is for general informational and educational guidance purposes only.
                   </p>
                 </div>
               </div>
@@ -336,7 +336,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   1. University Rankings, Tuition Fees & Intake Data
                 </h2>
                 <p>
-                  While TASA Grassroots takes utmost care to maintain accurate and updated information regarding university rankings (QS / Times Higher Education), tuition fee structures, living costs, and entry requirements:
+                  While Grassroots Study Abroad takes utmost care to maintain accurate and updated information regarding university rankings (QS / Times Higher Education), tuition fee structures, living costs, and entry requirements:
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-600">
                   <li>University fee structures, currency exchange rates, and entry criteria are updated periodically by foreign institutions and may change without prior notice.</li>
@@ -352,7 +352,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   Visa regulations, post-study work permits (e.g. UK Graduate Route 2-year PSW, US OPT/STEM OPT extensions, Canada PGWP rules, Australian Subclass 485), dependent visa rights, and permanent residency (PR) pathways are subject to sovereign government policy changes.
                 </p>
                 <p className="text-xs text-slate-600">
-                  TASA Grassroots provides immigration guidance based on current published high commission rules but is not liable for changes in foreign government immigration laws during or after a student’s course duration.
+                  Grassroots Study Abroad provides immigration guidance based on current published high commission rules but is not liable for changes in foreign government immigration laws during or after a student’s course duration.
                 </p>
               </section>
 
@@ -370,7 +370,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                   4. Third-Party Links & External Educational Portals
                 </h2>
                 <p className="text-xs text-slate-600">
-                  Our website contains external hyperlinks to official university portals, government immigration portals (UKVI, US CIS, IRCC, Australian Home Affairs), scholarship portals (Chevening, Fulbright), and testing boards. TASA Grassroots does not exercise control over or accept liability for content or privacy practices on third-party sites.
+                  Our website contains external hyperlinks to official university portals, government immigration portals (UKVI, US CIS, IRCC, Australian Home Affairs), scholarship portals (Chevening, Fulbright), and testing boards. Grassroots Study Abroad does not exercise control over or accept liability for content or privacy practices on third-party sites.
                 </p>
               </section>
 
@@ -386,7 +386,7 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 <div className="space-y-1">
                   <h3 className="font-heading font-bold text-sky-950 text-base">Cookie Policy & User Experience Transparency</h3>
                   <p className="text-xs text-sky-900">
-                    This Cookie Policy explains how Grassroots Solutions & Services Pvt Ltd uses cookies and similar web analytics technologies when you visit tasagrassroots.com.
+                    This Cookie Policy explains how Grassroots Solutions & Services Pvt Ltd uses cookies and similar web analytics technologies when you visit grstudyabroad.com.
                   </p>
                 </div>
               </div>
@@ -469,8 +469,8 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 For formal legal inquiries, data protection officer (DPO) requests, or verification of official university agency agreements, reach out directly to our corporate legal desk.
               </p>
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs text-slate-300">
-                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-red-400" /> legal@tasagrassroots.com</span>
-                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-red-400" /> privacy@tasagrassroots.com</span>
+                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-red-400" /> legal@grstudyabroad.com</span>
+                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-red-400" /> privacy@grstudyabroad.com</span>
                 <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-red-400" /> +91 84959 70819</span>
               </div>
             </div>

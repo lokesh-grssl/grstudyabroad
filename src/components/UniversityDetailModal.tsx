@@ -184,13 +184,13 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
   const faqs = [
     {
       q: `What is the application deadline for international students at ${university.name}?`,
-      a: `For Fall (September) intake, the recommended application submission deadline is June 30th. For Spring (January) intake, the deadline is October 31st. Priority evaluation is given to applications submitted via TASA Grassroots.`
+      a: `For Fall (September) intake, the recommended application submission deadline is June 30th. For Spring (January) intake, the deadline is October 31st. Priority evaluation is given to applications submitted via Grassroots Study Abroad.`
     },
     {
       q: `Can I apply to ${university.name} without an IELTS score?`,
       a: hasIeltsWaiver 
         ? `Yes! ${university.name} accepts Medium of Instruction (MOI) certificates from accredited English-medium high schools and universities, or Grade 12 English scores of 70%+ in lieu of IELTS.`
-        : `An official IELTS academic score (minimum 6.0 - 6.5) or equivalent PTE/TOEFL score is required. TASA counselors can provide guidance on English test preparation and pre-sessional language options.`
+        : `An official IELTS academic score (minimum 6.0 - 6.5) or equivalent PTE/TOEFL score is required. Grassroots Study Abroad counselors can provide guidance on English test preparation and pre-sessional language options.`
     },
     {
       q: `What are the post-study work visa rights for graduates in ${university.country}?`,
@@ -198,7 +198,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
     },
     {
       q: `Are international scholarships available at ${university.name}?`,
-      a: `Yes, ${university.scholarshipsAvailable}. Scholarships are automatically assessed upon submission of your academic transcripts and Statement of Purpose through TASA Grassroots.`
+      a: `Yes, ${university.scholarshipsAvailable}. Scholarships are automatically assessed upon submission of your academic transcripts and Statement of Purpose through Grassroots Study Abroad.`
     }
   ];
 
@@ -401,11 +401,11 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 onClick={() => setActiveTab(tab.id as TabType)}
                 className={`py-3 px-3.5 sm:px-5 border-b-2 font-bold text-xs sm:text-sm whitespace-nowrap transition-all flex items-center gap-2 shrink-0 ${
                   isActive 
-                    ? 'border-[#8B1E2D] text-[#8B1E2D] font-black bg-rose-50/70 rounded-t-xl' 
+                    ? 'border-[#E31B23] text-[#E31B23] font-black bg-rose-50/70 rounded-t-xl' 
                     : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-[#8B1E2D]' : 'text-gray-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-[#E31B23]' : 'text-gray-400'}`} />
                 <span>{tab.label}</span>
               </button>
             );
@@ -423,7 +423,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
               <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/90 shadow-2xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-gray-100">
                   <h3 className="font-heading font-extrabold text-base sm:text-lg text-gray-900 flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-[#8B1E2D]" />
+                    <Building2 className="w-5 h-5 text-[#E31B23]" />
                     <span>Institutional Overview & Excellence</span>
                   </h3>
                   <span className="text-xs font-bold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-lg">
@@ -441,7 +441,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 
                 {/* Strengths */}
                 <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
-                  <div className="font-extrabold text-xs uppercase text-[#8B1E2D] tracking-wider flex items-center gap-2 pb-2 border-b border-gray-100">
+                  <div className="font-extrabold text-xs uppercase text-[#E31B23] tracking-wider flex items-center gap-2 pb-2 border-b border-gray-100">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     <span>Key International Student Advantages</span>
                   </div>
@@ -467,7 +467,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
 
                 {/* Profile Specs */}
                 <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
-                  <div className="font-extrabold text-xs uppercase text-[#8B1E2D] tracking-wider flex items-center gap-2 pb-2 border-b border-gray-100">
+                  <div className="font-extrabold text-xs uppercase text-[#E31B23] tracking-wider flex items-center gap-2 pb-2 border-b border-gray-100">
                     <Globe className="w-4 h-4 text-blue-600" />
                     <span>Academic & Campus Specifications</span>
                   </div>
@@ -485,8 +485,8 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                       <strong className="text-gray-900">80+ Nations Represented</strong>
                     </div>
                     <div className="flex justify-between py-1">
-                      <span className="text-gray-500 font-medium">TASA Application Fee:</span>
-                      <strong className="text-emerald-700">$0 (100% Fee Waived via TASA)</strong>
+                      <span className="text-gray-500 font-medium">Application Fee:</span>
+                      <strong className="text-emerald-700">$0 (100% Fee Waived via Grassroots Study Abroad)</strong>
                     </div>
                   </div>
                 </div>
@@ -501,7 +501,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
                   {university.popularCourses.map((c, i) => (
                     <div key={i} className="p-3 bg-slate-50 rounded-xl border border-gray-200 text-xs font-bold text-gray-800 flex items-center gap-2.5">
-                      <GraduationCap className="w-4 h-4 text-[#8B1E2D] shrink-0" />
+                      <GraduationCap className="w-4 h-4 text-[#E31B23] shrink-0" />
                       <span className="truncate">{c}</span>
                     </div>
                   ))}
@@ -534,7 +534,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                       onClick={() => setSelectedProgramLevel(level)}
                       className={`px-3 py-1.5 rounded-lg transition-all ${
                         selectedProgramLevel === level 
-                          ? 'bg-[#8B1E2D] text-white shadow-xs font-black' 
+                          ? 'bg-[#E31B23] text-white shadow-xs font-black' 
                           : 'text-gray-600 hover:text-gray-900'
                       }`}
                     >
@@ -547,11 +547,11 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
               {/* Program List Cards */}
               <div className="grid grid-cols-1 gap-3">
                 {filteredPrograms.map((prog) => (
-                  <div key={prog.id} className="bg-white p-5 rounded-2xl border border-gray-200 hover:border-[#8B1E2D]/50 transition-all shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div key={prog.id} className="bg-white p-5 rounded-2xl border border-gray-200 hover:border-[#E31B23]/50 transition-all shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                     
                     <div className="space-y-1.5 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="bg-rose-50 text-[#8B1E2D] font-black text-[10px] px-2.5 py-0.5 rounded border border-rose-200 uppercase tracking-wider">
+                        <span className="bg-rose-50 text-[#E31B23] font-black text-[10px] px-2.5 py-0.5 rounded border border-rose-200 uppercase tracking-wider">
                           {prog.level}
                         </span>
                         <span className="text-gray-500 text-xs font-bold flex items-center gap-1">
@@ -577,7 +577,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                         onClose();
                         onOpenBookModal();
                       }}
-                      className="px-5 py-2.5 bg-gray-900 hover:bg-[#8B1E2D] text-white font-extrabold text-xs rounded-xl transition-colors shrink-0 flex items-center justify-center gap-2 shadow-xs"
+                      className="px-5 py-2.5 bg-gray-900 hover:bg-[#E31B23] text-white font-extrabold text-xs rounded-xl transition-colors shrink-0 flex items-center justify-center gap-2 shadow-xs"
                     >
                       <span>Check Eligibility</span>
                       <ChevronRight className="w-4 h-4" />
@@ -608,7 +608,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 
                 <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
                   <div className="text-xs font-extrabold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <GraduationCap className="w-4 h-4 text-[#8B1E2D]" />
+                    <GraduationCap className="w-4 h-4 text-[#E31B23]" />
                     <span>Undergraduate (UG)</span>
                   </div>
                   <div className="font-extrabold text-sm text-gray-900 leading-snug">
@@ -621,7 +621,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
 
                 <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
                   <div className="text-xs font-extrabold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <Award className="w-4 h-4 text-[#8B1E2D]" />
+                    <Award className="w-4 h-4 text-[#E31B23]" />
                     <span>Postgraduate (PG)</span>
                   </div>
                   <div className="font-extrabold text-sm text-gray-900 leading-snug">
@@ -634,10 +634,10 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
 
                 <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
                   <div className="text-xs font-extrabold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <Globe className="w-4 h-4 text-[#8B1E2D]" />
+                    <Globe className="w-4 h-4 text-[#E31B23]" />
                     <span>English Proficiency</span>
                   </div>
-                  <div className="font-extrabold text-sm text-[#8B1E2D] leading-snug">
+                  <div className="font-extrabold text-sm text-[#E31B23] leading-snug">
                     {university.entryRequirements.english}
                   </div>
                   <p className="text-xs text-gray-500 pt-2 border-t border-gray-100 leading-relaxed">
@@ -677,7 +677,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                     'English Test Score OR MOI Letter'
                   ].map((doc, idx) => (
                     <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-gray-200 flex items-center gap-2.5">
-                      <FileCheck className="w-4 h-4 text-[#8B1E2D] shrink-0" />
+                      <FileCheck className="w-4 h-4 text-[#E31B23] shrink-0" />
                       <span>{doc}</span>
                     </div>
                   ))}
@@ -699,11 +699,11 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                   <h4 className="font-heading font-extrabold text-base text-gray-900">
                     International Merit Scholarship & Fee Concession
                   </h4>
-                  <div className="font-black text-base text-[#8B1E2D]">
+                  <div className="font-black text-base text-[#E31B23]">
                     {university.scholarshipsAvailable}
                   </div>
                   <p className="text-xs text-gray-600 leading-relaxed">
-                    Evaluated automatically upon submission of academic transcripts. TASA Grassroots applicants receive priority evaluation for tuition waivers and institutional grants.
+                    Evaluated automatically upon submission of academic transcripts. Grassroots Study Abroad applicants receive priority evaluation for tuition waivers and institutional grants.
                   </p>
                 </div>
               </div>
@@ -749,7 +749,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 
                 <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-3">
                   <div className="flex items-center gap-2 font-extrabold text-sm text-gray-900">
-                    <Building2 className="w-4 h-4 text-[#8B1E2D]" />
+                    <Building2 className="w-4 h-4 text-[#E31B23]" />
                     <span>On-Campus & Student Accommodation</span>
                   </div>
                   <p className="text-xs text-gray-600 leading-relaxed">
@@ -772,7 +772,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
               {/* Student FAQs Accordion */}
               <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-2xs space-y-4">
                 <h4 className="font-heading font-extrabold text-xs sm:text-sm text-gray-900 uppercase tracking-wider flex items-center gap-2">
-                  <HelpCircle className="w-4 h-4 text-[#8B1E2D]" />
+                  <HelpCircle className="w-4 h-4 text-[#E31B23]" />
                   <span>Frequently Asked Questions ({university.name})</span>
                 </h4>
 
@@ -788,7 +788,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                       >
                         <span>{faq.q}</span>
                         {openFaqIndex === idx ? (
-                          <ChevronUp className="w-4 h-4 text-[#8B1E2D] shrink-0" />
+                          <ChevronUp className="w-4 h-4 text-[#E31B23] shrink-0" />
                         ) : (
                           <ChevronDown className="w-4 h-4 text-gray-400 shrink-0" />
                         )}
@@ -815,7 +815,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
           <div className="text-xs text-gray-600 font-medium text-center sm:text-left flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 hidden sm:block" />
             <span>
-              Official Partner Portal • <strong className="text-gray-900">0 Service Fees</strong> via TASA Grassroots
+              Official Partner Portal • <strong className="text-gray-900">0 Service Fees</strong> via Grassroots Study Abroad
             </span>
           </div>
 
@@ -826,7 +826,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
               onClick={handleOpenNewTab}
               className="px-4 py-3 bg-white border border-gray-300 hover:bg-gray-100 text-gray-800 rounded-xl font-extrabold text-xs transition-colors shrink-0 flex items-center gap-1.5 shadow-2xs"
             >
-              <ExternalLink className="w-4 h-4 text-[#8B1E2D]" />
+              <ExternalLink className="w-4 h-4 text-[#E31B23]" />
               <span>Open in New Tab</span>
             </button>
 
@@ -842,7 +842,7 @@ export const UniversityDetailModal: React.FC<UniversityDetailModalProps> = ({
                 onClose();
                 onOpenBookModal();
               }}
-              className="flex-1 sm:flex-initial px-6 py-3 bg-[#8B1E2D] hover:bg-gray-950 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
+              className="flex-1 sm:flex-initial px-6 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all flex items-center justify-center gap-2"
             >
               <span>Apply to {university.name.split(' ')[0]}</span>
               <ArrowRight className="w-4 h-4" />

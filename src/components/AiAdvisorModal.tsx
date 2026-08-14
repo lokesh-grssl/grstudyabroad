@@ -32,7 +32,7 @@ export const AiAdvisorModal: React.FC<AiAdvisorModalProps> = ({
     {
       id: '1',
       sender: 'ai',
-      text: 'Hello! I am your TASA Grassroots AI Counselor. Ask me anything about study abroad destinations, intake deadlines, Royal Roads / Wittenborg pathway transfers, scholarships, or visa rules!',
+      text: 'Hello! I am your Grassroots Study Abroad AI Counselor. Ask me anything about study abroad destinations, intake deadlines, Royal Roads / Wittenborg pathway transfers, scholarships, or visa rules!',
       time: 'Just now'
     }
   ]);
@@ -113,10 +113,10 @@ export const AiAdvisorModal: React.FC<AiAdvisorModalProps> = ({
             </div>
             <div>
               <h3 className="font-heading font-extrabold text-lg text-white flex items-center gap-2">
-                TASA AI Study Counselor
+                Grassroots AI Study Counselor
               </h3>
               <p className="text-white/80 text-xs">
-                Instant answers powered by Gemini & TASA Knowledge Base
+                Instant answers powered by Gemini & Grassroots Knowledge Base
               </p>
             </div>
           </div>

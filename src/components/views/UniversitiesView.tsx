@@ -538,7 +538,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </h1>
 
           <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
-            Search direct tie-up institutions with fast-track conditional offer letters, scholarship evaluations, and English proficiency waivers through TASA Grassroots.
+            Search direct tie-up institutions with fast-track conditional offer letters, scholarship evaluations, and English proficiency waivers through Grassroots Study Abroad.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3 items-center text-xs text-white/90 font-medium">

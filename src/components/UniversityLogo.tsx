@@ -68,7 +68,7 @@ export const UniversityLogo: React.FC<UniversityLogoProps> = ({
             </div>
 
             <div className="text-left overflow-hidden flex-1">
-              <h4 className="font-heading font-extrabold text-xs sm:text-sm text-gray-900 leading-snug line-clamp-1 group-hover:text-[#8B1E2D] transition-colors">
+              <h4 className="font-heading font-extrabold text-xs sm:text-sm text-gray-900 leading-snug line-clamp-1 group-hover:text-[#E31B23] transition-colors">
                 {name}
               </h4>
               <p className="text-[10px] text-gray-500 font-medium line-clamp-1">

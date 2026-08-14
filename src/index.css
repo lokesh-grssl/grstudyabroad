@@ -3,8 +3,8 @@
 @theme {
   --font-sans: "Figtree", system-ui, -apple-system, sans-serif;
   --font-heading: "Poppins", sans-serif;
-  --color-brand-red: #8B1E2D;
-  --color-brand-dark: #6C1521;
+  --color-brand-red: #E31B23;
+  --color-brand-dark: #C9141B;
   --color-brand-bg: #FAFAFA;
   --color-brand-text: #222222;
   --color-brand-border: #E8E8E8;
@@ -24,6 +24,10 @@
 
 .font-heading {
   font-family: "Poppins", sans-serif;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", Georgia, serif;
 }
 
 .font-sans {
@@ -55,7 +59,7 @@
 
 .shadow-soft-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(139, 30, 45, 0.12), 0 8px 20px -6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 20px 40px -15px rgba(227, 27, 35, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.06);
 }
 
 /* Custom scrollbar */
@@ -70,5 +74,5 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8B1E2D;
+  background: #E31B23;
 }

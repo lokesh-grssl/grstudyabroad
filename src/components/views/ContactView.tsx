@@ -262,7 +262,9 @@ export const ContactView: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-red-500 shrink-0" />
-                <span>admissions@tasagrassroots.com</span>
+                <a href="mailto:admissions@grstudyabroad.com" className="hover:text-red-400 transition-colors">
+                  admissions@grstudyabroad.com
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-red-500 shrink-0" />

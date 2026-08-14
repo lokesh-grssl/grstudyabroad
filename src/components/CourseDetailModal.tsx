@@ -29,7 +29,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
       <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-[#E8E8E8] relative">
         
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#8B1E2D] to-[#6C1521] text-white p-6 rounded-t-3xl relative">
+        <div className="bg-gradient-to-r from-[#E31B23] to-[#C9141B] text-white p-6 rounded-t-3xl relative">
           <button
             onClick={onClose}
             className="absolute top-5 right-5 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
@@ -60,7 +60,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
 
           <div className="bg-[#FAFAFA] p-4 rounded-2xl border border-gray-200 space-y-2">
             <div className="text-xs font-bold text-gray-500 uppercase">Average Tuition Fee</div>
-            <div className="font-heading font-extrabold text-lg text-[#8B1E2D]">{course.avgFee}</div>
+            <div className="font-heading font-extrabold text-lg text-[#E31B23]">{course.avgFee}</div>
             <div className="text-xs text-gray-500 pt-1 border-t border-gray-200">
               <span className="font-semibold text-gray-700">Eligibility:</span> {course.eligibility}
             </div>
@@ -69,7 +69,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
           {/* Career Outcomes */}
           <div className="space-y-3">
             <h3 className="font-heading font-bold text-base text-[#222222] flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-[#8B1E2D]" /> High-Demand Career Outcomes
+              <TrendingUp className="w-4 h-4 text-[#E31B23]" /> High-Demand Career Outcomes
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {course.careerOutcomes.map((co, i) => (
@@ -84,11 +84,11 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
           {/* Offering Universities */}
           <div className="space-y-3">
             <h3 className="font-heading font-bold text-base text-[#222222] flex items-center gap-2">
-              <Building2 className="w-4 h-4 text-[#8B1E2D]" /> Recommended Universities
+              <Building2 className="w-4 h-4 text-[#E31B23]" /> Recommended Universities
             </h3>
             <div className="flex flex-wrap gap-2">
               {course.topUniversities.map((uni, i) => (
-                <span key={i} className="px-3 py-1.5 bg-[#8B1E2D]/10 text-[#8B1E2D] font-bold text-xs rounded-lg border border-[#8B1E2D]/20">
+                <span key={i} className="px-3 py-1.5 bg-[#E31B23]/10 text-[#E31B23] font-bold text-xs rounded-lg border border-[#E31B23]/20">
                   {uni}
                 </span>
               ))}
@@ -108,7 +108,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
                 onClose();
                 onOpenBookModal();
               }}
-              className="px-6 py-3 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-sm rounded-xl shadow-lg transition-all"
+              className="px-6 py-3 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-sm rounded-xl shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all"
             >
               Enquire for This Program
             </button>

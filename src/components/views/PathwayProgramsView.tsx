@@ -35,13 +35,13 @@ export const PathwayProgramsView: React.FC<PathwayProgramsViewProps> = ({ onOpen
           
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 bg-[#8B1E2D] text-white px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-yellow-300" /> TASA grassroots Academic Pathways
+              <Sparkles className="w-3.5 h-3.5 text-yellow-300" /> Grassroots Study Abroad Academic Pathways
             </div>
             <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
               International Transfer Pathway Options & Fee Structure
             </h1>
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Start your degree program at TASA grassroots India campus with synchronized curriculum, transfer seamlessly to global partner university campuses in UAE, Netherlands, or Bulgaria, and save significantly on tuition fees.
+              Start your degree program at Grassroots Study Abroad India campus with synchronized curriculum, transfer seamlessly to global partner university campuses in UAE, Netherlands, or Bulgaria, and save significantly on tuition fees.
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
@@ -71,7 +71,7 @@ export const PathwayProgramsView: React.FC<PathwayProgramsViewProps> = ({ onOpen
             <FileCheck2 className="w-5 h-5 text-blue-600" />
           </div>
           <h3 className="font-heading font-bold text-base text-[#222222]">Synchronized Credit Transfer</h3>
-          <p className="text-xs text-gray-600">Guaranteed credit transfer approval from TASA India campus to global partners.</p>
+          <p className="text-xs text-gray-600">Guaranteed credit transfer approval from Grassroots Study Abroad India campus to global partners.</p>
         </div>
 
         <div className="bg-white p-6 rounded-2xl border border-[#E8E8E8] shadow-soft space-y-2">

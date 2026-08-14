@@ -1,4 +1,4 @@
-# TASA Grassroots Global Education - Robots.txt
+# Grassroots Study Abroad - Robots.txt
 User-agent: *
 Allow: /
 

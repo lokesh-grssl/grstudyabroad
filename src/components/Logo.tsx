@@ -11,22 +11,24 @@ export const Logo: React.FC<LogoProps> = ({
   size = 'md' 
 }) => {
   const logoHeights = {
-    sm: 'h-6 sm:h-7',
-    md: 'h-9 sm:h-11',
-    lg: 'h-12 sm:h-16'
+    sm: 'h-8 sm:h-9',
+    md: 'h-10 sm:h-12 md:h-13',
+    lg: 'h-14 sm:h-16 md:h-20'
   };
 
   return (
     <div className={`inline-flex items-center shrink-0 select-none ${className}`}>
       <img 
-        src="/tasa-logo.png" 
-        alt="TASA grassroots Study Abroad" 
-        className={`${logoHeights[size]} w-auto object-contain block drop-shadow-sm`}
+        src="/logo.svg" 
+        alt="Grassroots Study Abroad" 
+        decoding="async"
+        className={`${logoHeights[size]} w-auto max-w-[220px] sm:max-w-[280px] object-contain block`}
         referrerPolicy="no-referrer"
       />
     </div>
   );
 };
+
 
 
 

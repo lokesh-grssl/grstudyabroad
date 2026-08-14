@@ -9,7 +9,7 @@ export const WhatsAppButton: React.FC = () => {
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = encodeURIComponent(message || 'Hi TASA Grassroots, I am interested in studying abroad and would like free counselling!');
+    const text = encodeURIComponent(message || 'Hi Grassroots Study Abroad, I am interested in studying abroad and would like free counselling!');
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
     setIsOpen(false);
   };
@@ -26,7 +26,7 @@ export const WhatsAppButton: React.FC = () => {
                 <MessageSquare className="w-4 h-4 text-white fill-white" />
               </div>
               <div>
-                <div className="font-heading font-bold text-sm text-gray-900">TASA WhatsApp Support</div>
+                <div className="font-heading font-bold text-sm text-gray-900">Grassroots WhatsApp Support</div>
                 <div className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
                   <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Online Now
                 </div>

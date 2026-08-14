@@ -18,9 +18,10 @@ import {
 interface FooterProps {
   onNavigate: (view: ViewMode) => void;
   onOpenBookModal: () => void;
+  showNewsletter?: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal, showNewsletter = true }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -34,60 +35,62 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 pb-8 border-t border-slate-800">
+    <footer className="bg-slate-950 text-slate-200 pt-16 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Newsletter CTA Card */}
-        <div className="bg-gradient-to-r from-red-900 via-rose-950 to-slate-900 rounded-3xl p-8 sm:p-12 mb-16 text-white shadow-2xl border border-red-900/50 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-3 flex flex-col items-start">
-              <span className="inline-flex items-center gap-1.5 bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-                Stay Ahead of Intakes & Scholarships
-              </span>
-              <h3 className="font-heading font-black text-2xl sm:text-3xl text-white">
-                Subscribe to TASA | Grassroots Updates
-              </h3>
-              <p className="text-slate-300 text-sm max-w-xl">
-                Get monthly admission guides, fee waiver alerts, university spot offer dates, and country-specific visa policy updates directly to your inbox.
-              </p>
-            </div>
-            
-            <div className="lg:col-span-5">
-              {subscribed ? (
-                <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl flex items-center gap-3 text-white border border-white/20">
-                  <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
-                  <div>
-                    <div className="font-bold text-sm">Subscription Confirmed!</div>
-                    <div className="text-xs text-slate-300">Thank you for subscribing to Grassroots Solutions & Services updates.</div>
+        {showNewsletter && (
+          <div className="bg-gradient-to-r from-red-950 via-rose-950 to-slate-900 rounded-3xl p-8 sm:p-12 mb-16 text-white shadow-2xl border border-red-800/60 relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 space-y-3 flex flex-col items-start">
+                <span className="inline-flex items-center gap-1.5 bg-red-500/25 text-red-200 border border-red-400/40 text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                  Stay Ahead of Intakes & Scholarships
+                </span>
+                <h3 className="font-heading font-black text-2xl sm:text-3xl text-white">
+                  Subscribe to Grassroots Study Abroad Updates
+                </h3>
+                <p className="text-slate-200 text-sm max-w-xl font-normal">
+                  Get monthly admission guides, fee waiver alerts, university spot offer dates, and country-specific visa policy updates directly to your inbox.
+                </p>
+              </div>
+              
+              <div className="lg:col-span-5">
+                {subscribed ? (
+                  <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl flex items-center gap-3 text-white border border-white/20">
+                    <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0" />
+                    <div>
+                      <div className="font-bold text-sm">Subscription Confirmed!</div>
+                      <div className="text-xs text-slate-200">Thank you for subscribing to Grassroots Solutions & Services updates.</div>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
-                  <label htmlFor="newsletter-email" className="sr-only">Email address for updates</label>
-                  <input
-                    id="newsletter-email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address..."
-                    required
-                    aria-label="Email address for updates"
-                    className="px-4 py-3 bg-white/10 text-white placeholder-slate-400 rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm flex-1"
-                  />
-                  <button
-                    type="submit"
-                    aria-label="Subscribe to updates"
-                    className="px-6 py-3 bg-gradient-to-r from-red-600 to-rose-600 font-bold text-sm text-white rounded-2xl hover:from-red-500 hover:to-rose-500 transition-all flex items-center justify-center gap-2 shrink-0 shadow-lg"
-                  >
-                    <span>Subscribe</span>
-                    <Send className="w-4 h-4" />
-                  </button>
-                </form>
-              )}
+                ) : (
+                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                    <label htmlFor="newsletter-email" className="sr-only">Email address for updates</label>
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email address..."
+                      required
+                      aria-label="Email address for updates"
+                      className="px-4 py-3 bg-white/10 text-white placeholder-slate-300 rounded-2xl border border-white/30 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm flex-1"
+                    />
+                    <button
+                      type="submit"
+                      aria-label="Subscribe to updates"
+                      className="px-6 py-3 bg-gradient-to-r from-red-600 to-rose-600 font-bold text-sm text-white rounded-2xl hover:from-red-500 hover:to-rose-500 transition-all flex items-center justify-center gap-2 shrink-0 shadow-lg"
+                    >
+                      <span>Subscribe</span>
+                      <Send className="w-4 h-4" />
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Footer Navigation Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
@@ -102,33 +105,35 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
               <div className="text-sm font-bold text-white">
                 Grassroots Solutions & Services Pvt Ltd
               </div>
-              <div className="text-xs text-slate-400">
+              <div className="text-xs text-slate-300 font-medium">
                 Premier Global Overseas Education Advisory & University Placement Partner
               </div>
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed max-w-md">
+            <p className="text-xs text-slate-300 leading-relaxed max-w-md">
               Bridging aspirations with world-class opportunities across 1,000+ universities in 30+ countries. Enabling students with expert counseling, pathway programs, test prep, SOP writing, and visa filing.
             </p>
 
-            <div className="space-y-2.5 text-xs text-slate-300 pt-1">
+            <div className="space-y-2.5 text-xs text-slate-200 pt-1">
               <div className="flex items-start gap-3 bg-slate-900/90 p-3 rounded-xl border border-slate-800">
                 <Building2 className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-white text-xs mb-0.5">Corporate Office</div>
-                  <div className="text-slate-300 leading-normal">
+                  <div className="text-slate-200 leading-normal">
                     332/1, 1st Floor, Corporate Miller, Thimmaiah Road, Vasanth Nagar, Bangalore
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 text-slate-200 font-medium">
                 <Phone className="w-4 h-4 text-red-500 shrink-0" />
                 <span>+91 84959 70819</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 text-slate-200 font-medium">
                 <Mail className="w-4 h-4 text-red-500 shrink-0" />
-                <span>admissions@tasagrassroots.com</span>
+                <a href="mailto:admissions@grstudyabroad.com" className="hover:text-white transition-colors">
+                  admissions@grstudyabroad.com
+                </a>
               </div>
             </div>
 
@@ -137,8 +142,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
                 href="https://www.instagram.com/tasagrassroots/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                aria-label="Follow TASA Grassroots on Instagram" 
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#E4405F] text-slate-300 hover:text-white flex items-center justify-center transition-colors shadow-xs"
+                aria-label="Follow Grassroots Study Abroad on Instagram" 
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#E4405F] text-slate-200 hover:text-white flex items-center justify-center transition-colors shadow-xs"
               >
                 <Instagram className="w-4 h-4" />
               </a>
@@ -146,8 +151,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
                 href="https://www.linkedin.com/company/tasa-grassroots-global-education/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                aria-label="Follow TASA Grassroots on LinkedIn" 
-                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#0A66C2] text-slate-300 hover:text-white flex items-center justify-center transition-colors shadow-xs"
+                aria-label="Follow Grassroots Study Abroad on LinkedIn" 
+                className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#0A66C2] text-slate-200 hover:text-white flex items-center justify-center transition-colors shadow-xs"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -159,7 +164,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
             <h4 className="font-heading font-bold text-white text-base mb-4 border-l-2 border-red-600 pl-3">
               Quick Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li>
                 <a href="#/" onClick={(e) => { e.preventDefault(); onNavigate('home'); }} className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ArrowRight className="w-3 h-3 text-red-500" /> Home
@@ -213,7 +218,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
             <h4 className="font-heading font-bold text-white text-base mb-4 border-l-2 border-red-600 pl-3">
               Top Destinations
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li><a href="/#/destinations" onClick={(e) => { e.preventDefault(); onNavigate('destinations'); }} className="hover:text-white transition-colors flex items-center gap-2">Study in UK <CountryFlag code="UK" size="xs" /></a></li>
               <li><a href="/#/destinations" onClick={(e) => { e.preventDefault(); onNavigate('destinations'); }} className="hover:text-white transition-colors flex items-center gap-2">Study in USA <CountryFlag code="US" size="xs" /></a></li>
               <li><a href="/#/destinations" onClick={(e) => { e.preventDefault(); onNavigate('destinations'); }} className="hover:text-white transition-colors flex items-center gap-2">Study in Canada <CountryFlag code="CA" size="xs" /></a></li>
@@ -229,7 +234,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
             <h4 className="font-heading font-bold text-white text-base mb-4 border-l-2 border-red-600 pl-3">
               Our Services
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
               <li><a href="/#/services" onClick={(e) => { e.preventDefault(); onNavigate('services'); }} className="hover:text-white transition-colors block">Career Counselling</a></li>
               <li><a href="/#/services" onClick={(e) => { e.preventDefault(); onNavigate('services'); }} className="hover:text-white transition-colors block">University Selection</a></li>
               <li><a href="/#/services" onClick={(e) => { e.preventDefault(); onNavigate('services'); }} className="hover:text-white transition-colors block">SOP & LOR Writing</a></li>
@@ -254,36 +259,36 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBookModal }) =
         </div>
 
         {/* Bottom Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <div>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-300 font-medium gap-4">
+          <div className="text-slate-300">
             © {new Date().getFullYear()} Grassroots Solutions & Services Pvt Ltd. All rights reserved.
           </div>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <a 
               href="/#/privacy" 
               onClick={(e) => { e.preventDefault(); onNavigate('privacy'); }} 
-              className="hover:text-slate-300 transition-colors"
+              className="text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-white transition-colors"
             >
               Privacy Policy
             </a>
             <a 
               href="/#/terms" 
               onClick={(e) => { e.preventDefault(); onNavigate('terms'); }} 
-              className="hover:text-slate-300 transition-colors"
+              className="text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-white transition-colors"
             >
               Terms & Conditions
             </a>
             <a 
               href="/#/disclaimer" 
               onClick={(e) => { e.preventDefault(); onNavigate('disclaimer'); }} 
-              className="hover:text-slate-300 transition-colors"
+              className="text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-white transition-colors"
             >
               Disclaimer
             </a>
             <a 
               href="/#/cookies" 
               onClick={(e) => { e.preventDefault(); onNavigate('cookies'); }} 
-              className="hover:text-slate-300 transition-colors"
+              className="text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-white transition-colors"
             >
               Cookie Policy
             </a>

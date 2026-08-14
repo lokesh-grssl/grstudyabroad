@@ -122,6 +122,7 @@ export const CountryFlag: React.FC<CountryFlagProps> = ({
       alt={country || code || 'Flag'} 
       className={finalClass}
       loading="lazy"
+      decoding="async"
       onError={(e) => {
         // Fallback display if flag fails to load
         e.currentTarget.style.display = 'none';

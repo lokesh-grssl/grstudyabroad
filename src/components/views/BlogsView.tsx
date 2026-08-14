@@ -46,7 +46,7 @@ export const BlogsView: React.FC<BlogsViewProps> = ({ onOpenBookModal }) => {
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <span className="bg-[#8B1E2D]/10 text-[#8B1E2D] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-          TASA grassroots Knowledge & Insights Hub
+          Grassroots Study Abroad Knowledge & Insights Hub
         </span>
         <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-[#222222]">
           Overseas Education & Scholarship Guides

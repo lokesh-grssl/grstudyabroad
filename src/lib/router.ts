@@ -154,44 +154,44 @@ export function getPageTitle(
   selectedCourse?: Course | null
 ): string {
   if (selectedUniversity) {
-    return `${selectedUniversity.name} (${selectedUniversity.country}) | TASA Grassroots`;
+    return `${selectedUniversity.name} (${selectedUniversity.country}) | Grassroots Study Abroad`;
   }
   if (selectedCourse) {
-    return `${selectedCourse.title} (${selectedCourse.level}) | TASA Grassroots`;
+    return `${selectedCourse.title} (${selectedCourse.level}) | Grassroots Study Abroad`;
   }
 
   switch (view) {
     case 'home':
-      return 'TASA Grassroots | Global Overseas Education & Admissions Advisory';
+      return 'Grassroots Study Abroad | Global Overseas Education & Admissions Advisory';
     case 'glimpse':
-      return 'TASA Grassroots at a Glimpse | Corporate Reach & Milestones';
+      return 'Grassroots Study Abroad at a Glimpse | Corporate Reach & Milestones';
     case 'destinations':
-      return 'Study Destinations (UK, USA, Canada, Australia, Germany) | TASA Grassroots';
+      return 'Study Destinations (UK, USA, Canada, Australia, Germany) | Grassroots Study Abroad';
     case 'universities':
-      return '1,274+ Global Partner Universities Across 44 Countries | TASA Grassroots';
+      return '1,274+ Global Partner Universities Across 44 Countries | Grassroots Study Abroad';
     case 'programs':
-      return 'Search Degrees, Master’s & Diploma Programs | TASA Grassroots';
+      return 'Search Degrees, Master’s & Diploma Programs | Grassroots Study Abroad';
     case 'pathways':
-      return '1+2 Global Pathway & Dual Degree Programs | TASA Grassroots';
+      return '1+2 Global Pathway & Dual Degree Programs | Grassroots Study Abroad';
     case 'scholarships':
-      return '100+ Global Scholarships & Grants 2027 | TASA Grassroots';
+      return '100+ Global Scholarships & Grants 2027 | Grassroots Study Abroad';
     case 'services':
-      return 'Student Counselling, SOP, Visa Filing & Forex Services | TASA Grassroots';
+      return 'Student Counselling, SOP, Visa Filing & Forex Services | Grassroots Study Abroad';
     case 'blogs':
-      return 'Overseas Education Master Guides & Blogs | TASA Grassroots';
+      return 'Overseas Education Master Guides & Blogs | Grassroots Study Abroad';
     case 'events':
-      return 'Global Education Fairs & Spot Admissions Events | TASA Grassroots';
+      return 'Global Education Fairs & Spot Admissions Events | Grassroots Study Abroad';
     case 'contact':
-      return 'Contact Us & Corporate Office Locations | TASA Grassroots';
+      return 'Contact Us & Corporate Office Locations | Grassroots Study Abroad';
     case 'privacy':
-      return 'Privacy Policy & Student Data Protection | TASA Grassroots';
+      return 'Privacy Policy & Student Data Protection | Grassroots Study Abroad';
     case 'terms':
-      return 'Terms & Conditions | Advisory Services & Visa Filing Guidelines | TASA Grassroots';
+      return 'Terms & Conditions | Advisory Services & Visa Filing Guidelines | Grassroots Study Abroad';
     case 'disclaimer':
-      return 'Official Disclaimer & University Admissions Disclosures | TASA Grassroots';
+      return 'Official Disclaimer & University Admissions Disclosures | Grassroots Study Abroad';
     case 'cookies':
-      return 'Cookie Policy & User Preferences | TASA Grassroots';
+      return 'Cookie Policy & User Preferences | Grassroots Study Abroad';
     default:
-      return 'TASA Grassroots | Overseas Education Advisory';
+      return 'Grassroots Study Abroad | Overseas Education Advisory';
   }
 }

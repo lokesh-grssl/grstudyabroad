@@ -125,7 +125,7 @@ export default function App() {
   }, [currentView, selectedUniversity, selectedCourse]);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] text-[#222222] font-sans flex flex-col selection:bg-[#8B1E2D] selection:text-white">
+    <div className="min-h-screen bg-[#FAFAFA] text-[#222222] font-sans flex flex-col selection:bg-[#E31B23] selection:text-white">
       
       {/* Sticky Header */}
       <Header
@@ -234,6 +234,7 @@ export default function App() {
       <Footer 
         onNavigate={navigateTo} 
         onOpenBookModal={handleOpenBookModal}
+        showNewsletter={currentView !== 'home' || Boolean(selectedUniversity)}
       />
 
       {/* Floating Action Buttons */}

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ViewMode, University, Course } from '../../types';
 import { GlimpseSection } from '../GlimpseSection';
 import { CountryFlag } from '../CountryFlag';
+import { StudentPortraitIllustration } from '../StudentPortraitIllustration';
 import { 
   DESTINATIONS, 
   UNIVERSITIES, 
-  COURSES, 
   SCHOLARSHIPS, 
   PATHWAY_PROGRAMS, 
   BLOGS, 
@@ -23,18 +23,11 @@ import {
   ShieldCheck, 
   TrendingUp, 
   Globe, 
+  Building2,
+  Cpu,
   ChevronRight, 
   Star, 
   Calendar, 
-  Building2, 
-  Briefcase, 
-  BarChart3, 
-  Code, 
-  Cpu, 
-  Database, 
-  Wrench, 
-  DollarSign, 
-  Activity, 
   ChevronLeft
 } from 'lucide-react';
 
@@ -42,7 +35,7 @@ interface HomeViewProps {
   onNavigate: (view: ViewMode) => void;
   onOpenBookModal: () => void;
   onSelectUniversity: (uni: University) => void;
-  onSelectCourse: (course: Course) => void;
+  onSelectCourse?: (course: Course) => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({
@@ -51,33 +44,42 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onSelectUniversity,
   onSelectCourse
 }) => {
-  const getCourseIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Briefcase': return <Briefcase className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'BarChart3': return <BarChart3 className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Code': return <Code className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Cpu': return <Cpu className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Database': return <Database className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Wrench': return <Wrench className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'DollarSign': return <DollarSign className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'TrendingUp': return <TrendingUp className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Activity': return <Activity className="w-6 h-6 text-[#8B1E2D]" />;
-      default: return <Building2 className="w-6 h-6 text-[#8B1E2D]" />;
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If browser policy deferred autoplay, retry on user interaction
+          const handleFirstInteraction = () => {
+            if (videoRef.current) {
+              videoRef.current.play().catch(() => {});
+            }
+            window.removeEventListener('click', handleFirstInteraction);
+            window.removeEventListener('touchstart', handleFirstInteraction);
+          };
+          window.addEventListener('click', handleFirstInteraction, { once: true });
+          window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+        });
+      }
     }
-  };
+  }, []);
 
   const getWhyIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Award': return <Award className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Users': return <Users className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'CheckCircle2': return <CheckCircle2 className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'GraduationCap': return <GraduationCap className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'Sparkles': return <Sparkles className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'HeartHandshake': return <HeartHandshake className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-[#8B1E2D]" />;
-      case 'TrendingUp': return <TrendingUp className="w-6 h-6 text-[#8B1E2D]" />;
-      default: return <Award className="w-6 h-6 text-[#8B1E2D]" />;
+      case 'Award': return <Award className="w-6 h-6 text-[#E31B23]" />;
+      case 'Users': return <Users className="w-6 h-6 text-[#E31B23]" />;
+      case 'CheckCircle2': return <CheckCircle2 className="w-6 h-6 text-[#E31B23]" />;
+      case 'GraduationCap': return <GraduationCap className="w-6 h-6 text-[#E31B23]" />;
+      case 'Sparkles': return <Sparkles className="w-6 h-6 text-[#E31B23]" />;
+      case 'HeartHandshake': return <HeartHandshake className="w-6 h-6 text-[#E31B23]" />;
+      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-[#E31B23]" />;
+      case 'TrendingUp': return <TrendingUp className="w-6 h-6 text-[#E31B23]" />;
+      default: return <Award className="w-6 h-6 text-[#E31B23]" />;
     }
   };
 
@@ -87,15 +89,20 @@ export const HomeView: React.FC<HomeViewProps> = ({
       {/* 1. HERO SECTION */}
       <section className="px-2 sm:px-4 lg:px-8 pt-4 pb-0">
         <div className="relative rounded-3xl overflow-hidden min-h-[520px] sm:min-h-[580px] flex items-center justify-center p-6 sm:p-12 lg:p-16 border border-gray-200/80 shadow-2xl">
-          {/* Background Video - Original & Natural */}
+          {/* Background Video - Faststart Web-Optimized */}
           <video
+            ref={videoRef}
+            src="/hero-bg.mp4"
+            poster="/hero-poster.jpg"
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover bg-slate-900 pointer-events-none"
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
+            <source src="/api/hero-video" type="video/mp4" />
           </video>
           
           {/* Natural dark overlay to maintain crisp text contrast on the video */}
@@ -103,17 +110,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
           <div className="relative z-10 max-w-4xl mx-auto space-y-6 text-center">
             
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold border border-white/30 shadow-sm">
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>Premier Overseas Education Advisory • 36 Years Excellence</span>
-            </div>
-
-            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] drop-shadow-md">
-              Study Abroad <br />
-              <span className="text-[#F87171] relative inline-block">
-                Made Simple.
-                <svg className="absolute w-full h-3 -bottom-2 left-0 text-[#F87171]/50" viewBox="0 0 100 20" preserveAspectRatio="none">
-                  <path d="M0 15 Q 50 0, 100 15" stroke="currentColor" strokeWidth="6" fill="none" />
+            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15] drop-shadow-md">
+              Discover the Right <br />
+              <span className="font-playfair italic font-medium tracking-normal text-amber-300 relative inline-block px-1 drop-shadow-sm">
+                Country, Course & University
+                <svg className="absolute w-full h-2.5 -bottom-1.5 left-0 text-amber-400/70" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <path d="M0 15 Q 50 2, 100 15" stroke="currentColor" strokeWidth="5" fill="none" />
                 </svg>
               </span>
             </h1>
@@ -126,7 +128,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <button
                 onClick={onOpenBookModal}
-                className="w-full sm:w-auto px-8 py-4 bg-[#8B1E2D] hover:bg-[#a52235] text-white font-heading font-semibold text-base rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-4 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-heading font-bold text-base rounded-2xl shadow-xl hover:shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
               >
                 <span>Book Free Counselling</span>
                 <ArrowRight className="w-5 h-5" />
@@ -142,18 +144,18 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
 
             {/* Trust Indicators */}
-            <div className="pt-4 sm:pt-6 border-t border-white/20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center max-w-2xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-lg divide-y sm:divide-y-0 sm:divide-x divide-white/15">
-              <div className="pb-2 sm:pb-0 sm:px-2">
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">3,51,000+</div>
-                <div className="text-xs text-gray-200 font-medium">Students Advised</div>
+            <div className="pt-4 sm:pt-6 border-t border-white/20 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center max-w-3xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20 shadow-lg divide-y sm:divide-y-0 sm:divide-x divide-white/15">
+              <div className="pb-3 sm:pb-0 sm:px-3 flex flex-col justify-center">
+                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,500+</div>
+                <div className="text-xs sm:text-sm text-gray-200 font-medium mt-0.5">Partner Universities</div>
               </div>
-              <div className="py-2 sm:py-0 sm:px-2">
-                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,274+</div>
-                <div className="text-xs text-gray-200 font-medium">Partner Universities (44 Countries)</div>
-              </div>
-              <div className="pt-2 sm:pt-0 sm:px-2">
+              <div className="py-3 sm:py-0 sm:px-3 flex flex-col justify-center">
                 <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">1,00,000+</div>
-                <div className="text-xs text-gray-200 font-medium">Students Placed</div>
+                <div className="text-xs sm:text-sm text-gray-200 font-medium mt-0.5">Course Options</div>
+              </div>
+              <div className="pt-3 sm:pt-0 sm:px-3 flex flex-col justify-center">
+                <div className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-300">45+</div>
+                <div className="text-xs sm:text-sm text-gray-200 font-medium mt-0.5">Countries with Partner Institutions</div>
               </div>
             </div>
 
@@ -170,14 +172,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="text-xs font-bold text-[#8B1E2D] uppercase tracking-widest">Global Opportunities</div>
+            <div className="text-xs font-bold text-[#E31B23] uppercase tracking-widest">Global Opportunities</div>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#222222]">
               Popular Study Destinations
             </h2>
           </div>
           <button
             onClick={() => onNavigate('destinations')}
-            className="text-[#8B1E2D] font-heading font-bold text-sm hover:underline flex items-center gap-1"
+            className="text-[#E31B23] font-heading font-bold text-sm hover:underline flex items-center gap-1"
           >
             <span>Explore All Destinations</span>
             <ArrowRight className="w-4 h-4" />
@@ -224,7 +226,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   </span>
                   <button
                     onClick={() => onNavigate('destinations')}
-                    className="px-3 py-1.5 bg-[#8B1E2D]/10 hover:bg-[#8B1E2D] text-[#8B1E2D] hover:text-white font-bold text-xs rounded-xl transition-colors flex items-center gap-1"
+                    className="px-3 py-1.5 bg-[#E31B23]/10 hover:bg-[#E31B23] text-[#E31B23] hover:text-white font-bold text-xs rounded-xl transition-colors flex items-center gap-1"
                   >
                     <span>Explore</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -237,91 +239,81 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
 
-      {/* 4. POPULAR COURSES */}
-      <section className="bg-white py-16 border-y border-[#E8E8E8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold text-[#8B1E2D] uppercase tracking-widest">In-Demand Specializations</span>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#222222]">
-              Popular Worldwide Programs
-            </h2>
-            <p className="text-gray-600 text-sm">
-              Discover programs curated for high salary outcomes, STEM OPT extensions, and global graduate employability.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {COURSES.map((course, idx) => (
-              <motion.button
-                key={course.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
-                transition={{ duration: 0.35, delay: idx * 0.05 }}
-                whileHover={{ y: -3 }}
-                onClick={() => onSelectCourse(course)}
-                className="bg-[#FAFAFA] hover:bg-white p-5 rounded-2xl border border-[#E8E8E8] hover:border-[#8B1E2D] shadow-sm hover:shadow-md transition-all text-left flex flex-col justify-between group"
-              >
-                <div className="space-y-3">
-                  <div className="p-3 bg-gradient-to-br from-white via-slate-50 to-red-50/30 rounded-2xl w-fit border border-slate-200/80 shadow-2xs group-hover:border-[#8B1E2D]/40 group-hover:bg-red-50/50 group-hover:shadow-xs transition-all">
-                    {getCourseIcon(course.iconName)}
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-sm text-[#222222] group-hover:text-[#8B1E2D] transition-colors">
-                      {course.title}
-                    </h3>
-                    <div className="text-[11px] text-gray-500 font-medium mt-1">{course.category}</div>
-                  </div>
-                </div>
-
-                <div className="pt-3 mt-3 border-t border-gray-200 text-xs font-semibold text-emerald-700 flex items-center justify-between">
-                  <span>{course.duration}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#8B1E2D] group-hover:translate-x-1 transition-all" />
-                </div>
-              </motion.button>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* 5. WHY CHOOSE TASA */}
+      {/* 4. WHY CHOOSE GRASSROOTS STUDY ABROAD */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold text-[#8B1E2D] uppercase tracking-widest">Proven Track Record</span>
+        <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#222222]">
-            Why Students Trust TASA grassroots
+            Why Students Trust Grassroots Study Abroad
           </h2>
-          <p className="text-gray-700 text-base font-semibold max-w-2xl mx-auto">
-            36 years of getting students to campus — not a new promise, a long track record.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { stat: '96%', text: 'Eligible students receive an offer within 4 weeks*' },
-            { stat: '36 yrs', text: 'Advising students on global careers' },
-            { stat: '3,51,000+', text: 'Students advised' },
-            { stat: '1,00,000+', text: 'Students placed' }
-          ].map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="bg-white p-7 rounded-2xl border border-[#E8E8E8] shadow-soft shadow-soft-hover text-center space-y-3 flex flex-col justify-between"
-            >
-              <div className="font-heading font-black text-4xl sm:text-5xl text-[#8B1E2D] tracking-tight">
-                {item.stat}
-              </div>
-              <p className="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">
-                {item.text}
-              </p>
-            </motion.div>
-          ))}
+            { 
+              stat: '1500+', 
+              badge: 'Partner Network',
+              title: 'Massive University Network', 
+              desc: 'Direct representations and partnerships with top-tier accredited institutions worldwide.',
+              icon: Building2
+            },
+            { 
+              stat: '45+ countries', 
+              badge: 'Global Footprint',
+              title: 'Global Footprint', 
+              desc: 'including popular destinations like the US, UK, Canada, Australia, and Europe.',
+              icon: Globe
+            },
+            { 
+              stat: '66 in Top 300', 
+              badge: 'QS World Ranked',
+              title: 'Elite Partnerships', 
+              desc: "We represent 66 of the world's top 300 universities listed in the QS World Rankings.",
+              icon: Award
+            },
+            { 
+              stat: 'AI Matching', 
+              badge: 'Digital Platform',
+              title: 'Advanced EdTech Ecosystem', 
+              desc: 'Profile-Based Digital Matching to specific profile, grades, and budget with optimal global programs.',
+              icon: Cpu
+            }
+          ].map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="bg-white p-7 rounded-2xl border border-[#E8E8E8] shadow-soft shadow-soft-hover space-y-4 flex flex-col justify-between group hover:border-[#E31B23]/40 transition-all text-left"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-md bg-red-50 text-[#E31B23] border border-red-100">
+                      {item.badge}
+                    </span>
+                    <div className="w-10 h-10 rounded-xl bg-red-50 text-[#E31B23] flex items-center justify-center group-hover:bg-[#E31B23] group-hover:text-white transition-colors">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="font-heading font-black text-3xl sm:text-4xl text-[#E31B23] tracking-tight">
+                      {item.stat}
+                    </div>
+                    <h3 className="font-heading font-extrabold text-base sm:text-lg text-[#222222] mt-1 group-hover:text-[#E31B23] transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed pt-2 border-t border-gray-100">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -332,11 +324,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-8">
             <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-[#8B1E2D] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 bg-[#E31B23] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5 text-yellow-300" /> Save Up to 50% Tuition Fees
               </div>
               <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white">
-                TASA grassroots Pathway Programs
+                Grassroots Study Abroad Pathway Programs
               </h2>
               <p className="text-gray-300 text-sm leading-relaxed">
                 Study first in India with synchronized curriculum, transfer seamlessly to global partner universities, and graduate with full international degrees & post-study work permits.
@@ -345,7 +337,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
             <button
               onClick={() => onNavigate('pathways')}
-              className="px-6 py-3.5 bg-[#8B1E2D] hover:bg-white hover:text-[#8B1E2D] text-white font-bold text-sm rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 shrink-0"
+              className="px-6 py-3.5 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-red-600/30 hover:shadow-red-600/50 flex items-center justify-center gap-2 shrink-0"
             >
               <span>Explore All Pathway Programs</span>
               <ArrowRight className="w-4 h-4" />
@@ -355,17 +347,17 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {/* 3 Step Explanation */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white/5 border border-white/10 p-6 rounded-2xl relative">
-              <div className="w-8 h-8 rounded-full bg-[#8B1E2D] text-white font-bold text-xs flex items-center justify-center mb-4">
+              <div className="w-8 h-8 rounded-full bg-[#E31B23] text-white font-bold text-xs flex items-center justify-center mb-4">
                 01
               </div>
               <h3 className="font-heading font-bold text-lg text-white mb-2">1. Study First in India</h3>
               <p className="text-xs text-gray-400 leading-relaxed">
-                Complete Year 1 credits at TASA Grassroots India Center (Mumbai / Delhi) with global faculty and low tuition costs.
+                Complete Year 1 credits at Grassroots Study Abroad India Center (Mumbai / Delhi) with global faculty and low tuition costs.
               </p>
             </div>
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-2xl relative">
-              <div className="w-8 h-8 rounded-full bg-[#8B1E2D] text-white font-bold text-xs flex items-center justify-center mb-4">
+              <div className="w-8 h-8 rounded-full bg-[#E31B23] text-white font-bold text-xs flex items-center justify-center mb-4">
                 02
               </div>
               <h3 className="font-heading font-bold text-lg text-white mb-2">2. Transfer Internationally</h3>
@@ -375,7 +367,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-2xl relative">
-              <div className="w-8 h-8 rounded-full bg-[#8B1E2D] text-white font-bold text-xs flex items-center justify-center mb-4">
+              <div className="w-8 h-8 rounded-full bg-[#E31B23] text-white font-bold text-xs flex items-center justify-center mb-4">
                 03
               </div>
               <h3 className="font-heading font-bold text-lg text-white mb-2">3. Graduate & Work Abroad</h3>
@@ -454,14 +446,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <div className="text-xs font-bold text-[#8B1E2D] uppercase tracking-widest">Financial Aid</div>
+              <div className="text-xs font-bold text-[#E31B23] uppercase tracking-widest">Financial Aid</div>
               <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#222222]">
                 Global Scholarships & Bursaries
               </h2>
             </div>
             <button
               onClick={() => onNavigate('scholarships')}
-              className="text-[#8B1E2D] font-heading font-bold text-sm hover:underline flex items-center gap-1"
+              className="text-[#E31B23] font-heading font-bold text-sm hover:underline flex items-center gap-1"
             >
               <span>View All Scholarships</span>
               <ArrowRight className="w-4 h-4" />
@@ -479,11 +471,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className="bg-[#FAFAFA] p-6 rounded-2xl border border-[#E8E8E8] shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold text-[#8B1E2D] bg-[#8B1E2D]/10 px-2.5 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold text-[#E31B23] bg-[#E31B23]/10 px-2.5 py-0.5 rounded-full">
                     {sch.type}
                   </span>
                   <h3 className="font-heading font-bold text-lg text-[#222222]">{sch.title}</h3>
-                  <div className="font-heading font-extrabold text-xl text-[#8B1E2D]">{sch.amount}</div>
+                  <div className="font-heading font-extrabold text-xl text-[#E31B23]">{sch.amount}</div>
                   <p className="text-xs text-gray-600 leading-relaxed">{sch.description}</p>
                 </div>
 
@@ -491,7 +483,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <span>Deadline: <strong className="text-gray-800">{sch.deadline}</strong></span>
                   <button
                     onClick={() => onNavigate('scholarships')}
-                    className="font-bold text-[#8B1E2D] hover:underline"
+                    className="font-bold text-[#E31B23] hover:underline"
                   >
                     Apply Now
                   </button>
@@ -508,14 +500,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="text-xs font-bold text-[#8B1E2D] uppercase tracking-widest">Articles & Guides</div>
+            <div className="text-xs font-bold text-[#E31B23] uppercase tracking-widest">Articles & Guides</div>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#222222]">
               Latest Overseas Education Blogs
             </h2>
           </div>
           <button
             onClick={() => onNavigate('blogs')}
-            className="text-[#8B1E2D] font-heading font-bold text-sm hover:underline flex items-center gap-1"
+            className="text-[#E31B23] font-heading font-bold text-sm hover:underline flex items-center gap-1"
           >
             <span>View All Articles</span>
             <ArrowRight className="w-4 h-4" />
@@ -536,9 +528,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <img
                   src={blog.image}
                   alt={blog.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 bg-[#8B1E2D] text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
+                <span className="absolute top-3 left-3 bg-[#E31B23] text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
                   {blog.category}
                 </span>
               </div>
@@ -546,12 +540,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                 <div className="space-y-2">
                   <div className="text-[11px] text-gray-400 flex items-center gap-2">
-                    <Calendar className="w-3.5 h-3.5 text-[#8B1E2D]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#E31B23]" />
                     <span>{blog.date}</span>
                     <span>•</span>
                     <span>{blog.readTime}</span>
                   </div>
-                  <h3 className="font-heading font-bold text-base text-[#222222] group-hover:text-[#8B1E2D] transition-colors leading-snug">
+                  <h3 className="font-heading font-bold text-base text-[#222222] group-hover:text-[#E31B23] transition-colors leading-snug">
                     {blog.title}
                   </h3>
                   <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed">
@@ -561,7 +555,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
                 <button
                   onClick={() => onNavigate('blogs')}
-                  className="pt-2 text-xs font-bold text-[#8B1E2D] hover:underline flex items-center gap-1"
+                  className="pt-2 text-xs font-bold text-[#E31B23] hover:underline flex items-center gap-1"
                 >
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -573,33 +567,72 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
 
-      {/* 10. BOOK COUNSELLING CTA (LARGE BANNER SECTION) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-[#8B1E2D] to-[#6C1521] rounded-3xl p-8 sm:p-14 text-white text-center sm:text-left shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+      {/* 10. BOOK COUNSELLING CTA (MODERN SAAS LANDING PAGE HERO WITH OVERFLOWING STUDENT PORTRAIT) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-6">
+        <div className="relative overflow-visible bg-gradient-to-br from-[#D81820] via-[#C4131A] to-[#990D13] rounded-3xl sm:rounded-[36px] p-8 sm:p-12 lg:p-14 text-white shadow-[0_25px_60px_rgba(180,16,24,0.35)] border border-white/20">
+          
+          {/* Subtle Ambient Background Mesh & Lighting */}
+          <div className="absolute top-0 right-1/4 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-10 -mb-16 w-96 h-96 bg-black/20 rounded-full blur-2xl pointer-events-none" />
           
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                Start Your Global Career Today
-              </span>
-              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-                Ready to Begin Your Global Journey?
+            {/* Left Content Column with generous whitespace */}
+            <div className="lg:col-span-7 xl:col-span-7 space-y-6 text-center sm:text-left">
+              <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md text-white text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider border border-white/25 shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+                <span>Start Your Global Career Today</span>
+              </div>
+
+              <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.12]">
+                Ready to Begin Your <br className="hidden sm:inline" />Global Journey?
               </h2>
-              <p className="text-white/80 text-sm sm:text-base max-w-2xl leading-relaxed">
+
+              <p className="text-white/90 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
                 Book a free 1-on-1 personalized counselling session with our senior advisors. Get university shortlisting, loan assistance, and visa guidance at zero cost!
               </p>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4">
+                <button
+                  onClick={onOpenBookModal}
+                  className="w-full sm:w-auto px-8 py-4 bg-white text-[#D81820] hover:bg-[#111111] hover:text-white font-heading font-extrabold text-base rounded-2xl shadow-xl shadow-red-950/40 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 cursor-pointer"
+                >
+                  <span>Book Free Counselling</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => onNavigate('universities')}
+                  className="w-full sm:w-auto px-7 py-4 bg-white/10 hover:bg-white/20 text-white font-heading font-bold text-base rounded-2xl transition-all duration-300 border border-white/25 backdrop-blur-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>Browse Universities</span>
+                </button>
+              </div>
+
+              {/* Trust highlights below CTA button */}
+              <div className="pt-3 flex flex-wrap items-center justify-center sm:justify-start gap-y-2.5 gap-x-6 text-xs sm:text-sm text-white/85 font-semibold">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
+                  <span>100% Free Consultation</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
+                  <span>Verified Advisors</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-300 shrink-0" />
+                  <span>Spot Offer Guidance</span>
+                </div>
+              </div>
             </div>
 
-            <div className="lg:col-span-4 flex justify-center lg:justify-end">
-              <button
-                onClick={onOpenBookModal}
-                className="px-8 py-4 bg-white text-[#8B1E2D] hover:bg-[#111111] hover:text-white font-heading font-extrabold text-base rounded-2xl shadow-xl transition-all transform hover:scale-105"
-              >
-                Book Free Counselling
-              </button>
-            </div>
+            {/* Right Column Spacer on Desktop */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-5 h-[340px]" aria-hidden="true" />
           </div>
+
+          {/* Student Portrait (Absolute positioning overflowing the top edge by 80-110px on desktop) */}
+          <div className="mt-8 lg:mt-0 lg:absolute lg:right-4 xl:right-10 lg:-top-24 xl:-top-28 lg:bottom-0 lg:w-[410px] xl:w-[460px] flex items-end justify-center z-20 pointer-events-none">
+            <StudentPortraitIllustration className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-none" />
+          </div>
+
         </div>
       </section>
 

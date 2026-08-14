@@ -26,9 +26,9 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
   const glimpseStats = [
     {
       id: 'universities',
-      stat: '1,274+',
+      stat: '1500+',
       subtext: 'International Partner Universities',
-      detail: 'Across 44 Top Worldwide Countries',
+      detail: 'Across 45+ Top Worldwide Countries',
       badge: 'Global Footprint',
       icon: Globe2,
       gradient: 'from-blue-600 to-indigo-600',
@@ -112,12 +112,12 @@ export const GlimpseSection: React.FC<GlimpseSectionProps> = ({
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/20 to-blue-500/20 border border-white/10 px-4 py-1.5 rounded-full backdrop-blur-md">
             <Sparkles className="w-4 h-4 text-red-400" />
             <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-gray-200">
-              TASA | Grassroots At a Glimpse
+              Grassroots Study Abroad At a Glimpse
             </span>
           </div>
 
           <h2 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
-            Unrivaled Scale in <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-300 to-blue-400">Global Education</span>
+            Helping You Study Abroad with <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-300 to-amber-300">Confidence</span>
           </h2>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">

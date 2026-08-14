@@ -113,7 +113,7 @@ export const ServicesView: React.FC<ServicesViewProps> = ({ onOpenBookModal }) =
                 <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#222222]">
                   {selectedService.title}
                 </h2>
-                <div className="text-xs text-gray-500 font-medium">TASA Grassroots Service Spec</div>
+                <div className="text-xs text-gray-500 font-medium">Grassroots Study Abroad Service Spec</div>
               </div>
             </div>
 

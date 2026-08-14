@@ -44,7 +44,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <span className="bg-[#8B1E2D]/10 text-[#8B1E2D] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+        <span className="bg-[#E31B23]/10 text-[#E31B23] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
           {SCHOLARSHIPS.length} Verified Scholarships & Fellowships
         </span>
         <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-[#222222]">
@@ -66,7 +66,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by scholarship name, provider or key (e.g. Chevening, Oxford, Fulbright)..."
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#8B1E2D]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#E31B23]"
             />
           </div>
 
@@ -74,7 +74,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8B1E2D]"
+              className="w-full px-3.5 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#E31B23]"
             >
               {types.map(t => <option key={t} value={t}>{t === 'All' ? 'All Types' : t}</option>)}
             </select>
@@ -84,7 +84,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
             <select
               value={selectedCountry}
               onChange={(e) => setSelectedCountry(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8B1E2D]"
+              className="w-full px-3.5 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#E31B23]"
             >
               {countries.map(c => <option key={c} value={c}>{c === 'All' ? 'All Countries' : c}</option>)}
             </select>
@@ -94,7 +94,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
             <select
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8B1E2D]"
+              className="w-full px-3.5 py-2.5 bg-[#FAFAFA] border border-gray-200 rounded-xl text-xs sm:text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#E31B23]"
             >
               {levels.map(l => <option key={l} value={l}>{l === 'All' ? 'All Levels' : l}</option>)}
             </select>
@@ -111,7 +111,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
                 setSelectedCountry('All');
                 setSelectedLevel('All');
               }}
-              className="text-[#8B1E2D] hover:underline font-bold"
+              className="text-[#E31B23] hover:underline font-bold"
             >
               Reset Filters
             </button>
@@ -128,13 +128,13 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.3, delay: Math.min(idx * 0.05, 0.3) }}
-            className="bg-white rounded-3xl border border-[#E8E8E8] shadow-soft p-6 sm:p-7 space-y-4 flex flex-col justify-between hover:border-[#8B1E2D]/30 transition-all group"
+            className="bg-white rounded-3xl border border-[#E8E8E8] shadow-soft p-6 sm:p-7 space-y-4 flex flex-col justify-between hover:border-[#E31B23]/30 transition-all group"
           >
             <div className="space-y-3.5">
               
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-[10px] font-bold text-[#8B1E2D] bg-[#8B1E2D]/10 px-2.5 py-0.5 rounded-full uppercase">
+                  <span className="text-[10px] font-bold text-[#E31B23] bg-[#E31B23]/10 px-2.5 py-0.5 rounded-full uppercase">
                     {sch.type}
                   </span>
                   {sch.degreeLevel && (
@@ -151,7 +151,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
               </div>
 
               <div>
-                <h3 className="font-heading font-extrabold text-lg sm:text-xl text-[#222222] group-hover:text-[#8B1E2D] transition-colors leading-snug">
+                <h3 className="font-heading font-extrabold text-lg sm:text-xl text-[#222222] group-hover:text-[#E31B23] transition-colors leading-snug">
                   {sch.title}
                 </h3>
                 <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-1">
@@ -190,8 +190,8 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
 
             <div className="pt-4 border-t border-gray-100 flex items-center justify-between flex-wrap gap-2 text-xs">
               <div className="text-gray-500 flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-[#8B1E2D]" />
-                <span>Deadline: <strong className="text-[#8B1E2D] font-bold">{sch.deadline}</strong></span>
+                <Calendar className="w-3.5 h-3.5 text-[#E31B23]" />
+                <span>Deadline: <strong className="text-[#E31B23] font-bold">{sch.deadline}</strong></span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -208,9 +208,9 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenBookMo
                 )}
                 <button
                   onClick={onOpenBookModal}
-                  className="px-4 py-2 bg-[#8B1E2D] hover:bg-[#111111] text-white font-bold text-xs rounded-xl shadow-sm transition-all"
+                  className="px-4 py-2 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white font-bold text-xs rounded-xl shadow-md shadow-red-600/30 hover:shadow-red-600/50 transition-all"
                 >
-                  Apply via TASA
+                  Apply via Grassroots
                 </button>
               </div>
             </div>

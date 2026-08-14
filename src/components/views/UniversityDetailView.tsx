@@ -191,13 +191,13 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
   const faqs = [
     {
       q: `What is the application deadline for international students at ${university.name}?`,
-      a: `For Fall (September) intake, the recommended application submission deadline is June 30th. For Spring (January) intake, the deadline is October 31st. Priority evaluation is given to applications submitted via TASA Grassroots.`
+      a: `For Fall (September) intake, the recommended application submission deadline is June 30th. For Spring (January) intake, the deadline is October 31st. Priority evaluation is given to applications submitted via Grassroots Study Abroad.`
     },
     {
       q: `Can I apply to ${university.name} without an IELTS score?`,
       a: hasIeltsWaiver 
         ? `Yes! ${university.name} accepts Medium of Instruction (MOI) certificates from accredited English-medium high schools and universities, or Grade 12 English scores of 70%+ in lieu of IELTS.`
-        : `An official IELTS academic score (minimum 6.0 - 6.5) or equivalent PTE/TOEFL score is required. TASA counselors can provide guidance on English test preparation and pre-sessional language options.`
+        : `An official IELTS academic score (minimum 6.0 - 6.5) or equivalent PTE/TOEFL score is required. Grassroots Study Abroad counselors can provide guidance on English test preparation and pre-sessional language options.`
     },
     {
       q: `What are the post-study work visa rights for graduates in ${university.country}?`,
@@ -205,7 +205,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
     },
     {
       q: `Are international scholarships available at ${university.name}?`,
-      a: `Yes, ${university.scholarshipsAvailable}. Scholarships are automatically assessed upon submission of your academic transcripts and Statement of Purpose through TASA Grassroots.`
+      a: `Yes, ${university.scholarshipsAvailable}. Scholarships are automatically assessed upon submission of your academic transcripts and Statement of Purpose through Grassroots Study Abroad.`
     }
   ];
 
@@ -298,7 +298,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
 
             <span className="bg-emerald-500/20 text-emerald-300 text-xs font-black px-3 py-1.5 rounded-xl border border-emerald-500/30 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>0% TASA Agency Fees</span>
+              <span>0% Agency Fees</span>
             </span>
           </div>
 
@@ -502,8 +502,8 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                         <strong className="text-gray-900">80+ Nations Represented</strong>
                       </div>
                       <div className="flex justify-between py-1.5">
-                        <span className="text-gray-500 font-medium">TASA Application Fee:</span>
-                        <strong className="text-emerald-700">$0 (100% Fee Waived via TASA)</strong>
+                        <span className="text-gray-500 font-medium">Application Fee:</span>
+                        <strong className="text-emerald-700">$0 (100% Fee Waived via Grassroots Study Abroad)</strong>
                       </div>
                     </div>
                   </div>
@@ -717,7 +717,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                       {university.scholarshipsAvailable}
                     </div>
                     <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                      Evaluated automatically upon submission of academic transcripts. TASA Grassroots applicants receive priority evaluation for tuition waivers and institutional grants.
+                      Evaluated automatically upon submission of academic transcripts. Grassroots Study Abroad applicants receive priority evaluation for tuition waivers and institutional grants.
                     </p>
                   </div>
                 </div>
@@ -760,7 +760,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                     <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 space-y-1">
                       <span className="text-emerald-800 font-medium block">Scholarship Potential</span>
                       <strong className="text-emerald-700 text-base block">Up to 30% Waiver</strong>
-                      <span className="text-emerald-900 font-extrabold text-xs block">TASA Priority Evaluation</span>
+                      <span className="text-emerald-900 font-extrabold text-xs block">Grassroots Priority Evaluation</span>
                     </div>
                   </div>
                 </div>
@@ -850,7 +850,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                   Apply to {university.name}
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Submit your application through TASA Grassroots with <strong className="text-emerald-400 font-bold">$0 processing fees</strong> and priority offer letter evaluation.
+                  Submit your application through Grassroots Study Abroad with <strong className="text-emerald-400 font-bold">$0 processing fees</strong> and priority offer letter evaluation.
                 </p>
               </div>
 
@@ -881,7 +881,7 @@ export const UniversityDetailView: React.FC<UniversityDetailViewProps> = ({
                 </button>
 
                 <a
-                  href="https://wa.me/918495970819?text=Hello%20TASA,%20I%20am%20interested%20in%20applying%20to%20" 
+                  href="https://wa.me/918495970819?text=Hello%20Grassroots%20Study%20Abroad,%20I%20am%20interested%20in%20applying%20to%20" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 px-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl transition-all flex items-center justify-center gap-2"

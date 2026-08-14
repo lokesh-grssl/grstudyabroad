@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Logo */}
             <a 
               href="#/"
-              aria-label="TASA Grassroots Education Home"
+              aria-label="Grassroots Study Abroad Home"
               onClick={(e) => {
                 e.preventDefault();
                 onNavigate('home');
@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 onClick={onOpenBookModal}
-                className="px-5 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white text-xs font-bold rounded-full shadow-md hover:shadow-red-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5"
+                className="px-5 py-2.5 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white text-xs font-bold rounded-full shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5"
               >
                 <span>Book Counselling</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -204,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onOpenBookModal();
                   setMobileMenuOpen(false);
                 }}
-                className="w-full py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white rounded-2xl font-bold text-xs shadow-lg shadow-red-500/20 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                className="w-full py-3.5 bg-[#E31B23] hover:bg-[#C9141B] active:bg-[#B31016] text-white rounded-2xl font-bold text-xs shadow-lg shadow-red-600/30 hover:shadow-red-600/50 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
               >
                 <span>Book Free Counselling</span>
                 <ArrowRight className="w-4 h-4" />

@@ -325,7 +325,7 @@ export const BlogDetailView: React.FC<BlogDetailViewProps> = ({
                 {blog.author}
               </div>
               <p className="text-xs text-gray-500 leading-relaxed">
-                TASA Senior Overseas Education Specialist & Global Admissions Advisor. Specialized in UK, USA, Australia, and European university placements.
+                Grassroots Study Abroad Senior Overseas Education Specialist & Global Admissions Advisor. Specialized in UK, USA, Australia, and European university placements.
               </p>
             </div>
           </div>
@@ -340,7 +340,7 @@ export const BlogDetailView: React.FC<BlogDetailViewProps> = ({
                 Ready to Apply to your Dream University?
               </h3>
               <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                Get a free profile evaluation, application fee waivers, scholarship application assistance, and visa guidance with TASA grassroots.
+                Get a free profile evaluation, application fee waivers, scholarship application assistance, and visa guidance with Grassroots Study Abroad.
               </p>
             </div>
             {onOpenBookModal && (
